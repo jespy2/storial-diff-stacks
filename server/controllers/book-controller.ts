@@ -1,84 +1,86 @@
-import Book from '../models/book-models.js'
+import Book from '../models/book-models'
 
-interface IBookController {
-  createBook: 
-}
+import { IBookController, IBookQuery, IBooks } from '../types';
 
-const bookController = {};
 
-bookController.createBook = (req, res) => {
-    const body = req.body
+const bookController = {} as IBookController;
+
+bookController.createBook = async (req, res): Promise<void> => {
+    const newBook: IBooks = req.body;
     
-    if (!body) {
-        return res.status(400).json({
+    if (!newBook) {
+        res.status(400).json({
             success: false,
             error: 'You must provide a book',
-        })
+        });
+        return;
     }
 
-    const book = new Book(body)
+    const book = new Book(newBook)
 
     if (!book) {
-        return res.status(400).json({ success: false, error: err })
+        res.status(400).json({ success: false, error: Error });
+        return;
     }
 
-    book
-        .save()
-        .then(() => {
-            return res.status(201).json({
-                success: true,
-                id: book._id,
-                message: 'Book created!',
+    try {
+        await book
+            .save()
+            .then(() => {
+                return res.status(201).json({
+                    success: true,
+                    id: book._id,
+                    message: 'Book created!',
+                })
             })
-        })
-        .catch(error => {
-            return res.status(400).json({
+    } catch(error) {
+            res.status(500).json({
                 error,
                 message: 'Book not created!',
             })
-        })
+    }
 }
 
-bookController.updateBook = async (req, res) => {
-    const body = req.body
+
+bookController.updateBook = async (req, res): Promise<void> => {
+    const body: IBooks = req.body
 
     if (!body) {
-        return res.status(400).json({
+        res.status(400).json({
             success: false,
             error: 'You must provide a body to update',
-        })
+        });
+        return;
     }
-
-    Book.findOne({ _id: req.params.id }, (err, book) => {
-        if (err) {ç
-            return res.status(404).json({
-                err,
-                message: 'Book not found!',
-            })
-        }
+    
+    try {
+        const book = await Book.findOne({ _id: req.params.id });
+            if (!book) {
+                res.status(404).json({
+                    message: 'Book not found!',
+                });
+                return;
+            }
+            
         book.title = body.title
         book.author = body.author
         book.notes = body.notes
-        book
-            .save()
-            .then(() => {
-                return res.status(200).json({
-                    success: true,
-                    id: book._id,
-                    message: 'Book updated!',
-                })
-            })
-            .catch(error => {
-                return res.status(404).json({
-                    error,
-                    message: 'Book not updated!',
-                })
-            })
-    })
+            await book.save();
+            res.status(200).json({
+                success: true,
+                id: book._id,
+                message: 'Book updated!',
+            });
+    } catch (error) {
+        res.status(404).json({
+            error,
+            message: 'Book not updated!',
+        });
+    }
 }
 
-bookController.deleteBook = async (req, res) => {
-    await Book.findOneAndDelete({ _id: req.params.id }, (err, book) => {
+bookController.deleteBook = async (req, res): Promise<void> => {
+    await Book.findOneAndDelete({ _id: req.params.id }, (err: Error, book: IBookQuery) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -93,8 +95,8 @@ bookController.deleteBook = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-bookController.getBookById = async (req, res) => {
-    await Book.findOne({ _id: req.params.id }, (err, book) => {
+bookController.getBookById = async (req, res): Promise<void> => {
+    await Book.findOne({ _id: req.params.id }, (err: Error, book: IBookQuery) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -108,8 +110,8 @@ bookController.getBookById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-bookController.getBooks = async (req, res) => {
-    await Book.find({}, (err, books) => {
+bookController.getBooks = async (req, res): Promise<void> => {
+    await Book.find({}, (err: Error, books: IBookQuery[]) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

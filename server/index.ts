@@ -1,8 +1,8 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
 
-import DB from './db/index.js'
-import bookRouter from './routes/book-router.js'
+import DB from './db'
+import bookRouter from './routes/book-router.ts'
 
 const app = express()
 const apiPort =8000
@@ -13,7 +13,7 @@ app.use(express.json())
 
 DB.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!')
 })
 

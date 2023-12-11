@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-mongoose.connect('mongodb://127.0.0.1:27017/books', { useNewUrlParser: true })
+mongoose.connect('mongodb://127.0.0.1:27017/books')
     .catch(e => {
         console.error('Connection error', e.message)
     })
