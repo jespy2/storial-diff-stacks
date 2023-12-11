@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { Footer } from '../components/Footer';
 
@@ -7,43 +7,46 @@ import api from '../api';
 
 export const EditBook = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [notes, setNotes] = useState('');
-  const [newTitle, setNewTitle] = useState('');
-  const [newAuthor, setNewAuthor] = useState('');
-  const [newNotes, setNewNotes] = useState('');
-  const [isLoading, setIsLoading] = useState('');
+  const [title, setTitle] = useState<string>('');
+  const [author, setAuthor] = useState<string>('');
+  const [notes, setNotes] = useState<string>('');
+  const [newTitle, setNewTitle] = useState<string>('');
+  const [newAuthor, setNewAuthor] = useState<string>('');
+  const [newNotes, setNewNotes] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+
+  const _id = Number(id)
 
   //load book data for initial render and apply focus to title field
-  const titleField = useRef(null);
+  const titleField = useRef<HTMLInputElement | null>(null);
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      await api.getBookById(id)
+      await api.getBookById(_id)
       .then(book => {
         setTitle(book.data.data.title);
         setAuthor(book.data.data.author);
         setNotes(book.data.data.notes);
         setIsLoading(false);
-        titleField.current.focus();
+        titleField.current && titleField.current.focus();
       })          
     })()
   }, [])  
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void}) => {
     e.preventDefault();
-    const payload = { }
+    const payload = { title, author, notes };
     payload.title = newTitle ? newTitle : title;
     payload.author = newAuthor ? newAuthor : author;
     payload.notes = newNotes ? newNotes : notes;
 
-    await api.updateBookById(id, payload)
+    await api.updateBookById(_id, payload)
     .then(res => {
       window.alert(`${newTitle} has been successfully updated`)
-      history.push('/books/list');
+      navigate('/books/list');
     })
   }
 
@@ -64,7 +67,7 @@ export const EditBook = () => {
         className="flex flex-col"
         onSubmit={handleSubmit}
       >
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="title" >
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title" >
           Title
         </label>
         <input
