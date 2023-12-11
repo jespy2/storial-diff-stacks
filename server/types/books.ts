@@ -1,10 +1,10 @@
-export interface IBooks {
+export interface IBook {
   title: string;
   author: string;
   notes: string;
 }
 
-export interface IBookQuery extends IBooks{
+export interface IBookQuery extends IBook{
   save: () => Promise<any>;
   _id: number;
 }

@@ -1,12 +1,12 @@
 import Book from '../models/book-models'
 
-import { IBookController, IBookQuery, IBooks } from '../types';
+import { IBookController, IBookQuery, IBook } from '../types';
 
 
 const bookController = {} as IBookController;
 
 bookController.createBook = async (req, res): Promise<void> => {
-    const newBook: IBooks = req.body;
+    const newBook: IBook = req.body;
     
     if (!newBook) {
         res.status(400).json({
@@ -43,7 +43,7 @@ bookController.createBook = async (req, res): Promise<void> => {
 
 
 bookController.updateBook = async (req, res): Promise<void> => {
-    const body: IBooks = req.body
+    const body: IBook = req.body
 
     if (!body) {
         res.status(400).json({
