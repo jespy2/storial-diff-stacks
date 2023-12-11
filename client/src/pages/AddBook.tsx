@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Footer } from '../components/Footer';
 
@@ -9,21 +9,21 @@ export const AddBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [notes, setNotes] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
   
   //upon render, apply focus to title field
-  const titleField = useRef(null);
+  const titleField = useRef<HTMLInputElement | null>(null);
   useEffect(() =>{
-    titleField.current.focus();
+    titleField.current && titleField.current.focus();
   }, [])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const payload = { title, author, notes };
 
     await api.insertBook(payload)
     .then(res => {
-      history.push('/books/list')
+      navigate('/books/list')
     })
   }
 
@@ -38,7 +38,7 @@ export const AddBook = () => {
       </main>
 
       <form className="flex flex-col" onSubmit={handleSubmit} >
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="title" >
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title" >
           Title
         </label>
         <input 
