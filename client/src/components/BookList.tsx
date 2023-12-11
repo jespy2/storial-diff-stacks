@@ -7,7 +7,7 @@ import { IBook } from "../types/books";
 export const BookList = ({ books }: { books: IBook[] }) => {
 	const navigate = useNavigate();
 
-	const handleDelete = (id: number) => {
+	const handleDelete = (id: string) => {
 		api.deleteBookById(id);
 		//refresh after delete
 		navigate(0);

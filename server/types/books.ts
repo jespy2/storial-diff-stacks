@@ -6,5 +6,5 @@ export interface IBook {
 
 export interface IBookQuery extends IBook{
   save: () => Promise<any>;
-  _id: number;
+  _id: string;
 }

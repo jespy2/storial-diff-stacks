@@ -17,15 +17,12 @@ export const EditBook = () => {
   const [newNotes, setNewNotes] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-
-  const _id = Number(id)
-
   //load book data for initial render and apply focus to title field
   const titleField = useRef<HTMLInputElement | null>(null);
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      await api.getBookById(_id)
+      await api.getBookById(id as string)
       .then(book => {
         setTitle(book.data.data.title);
         setAuthor(book.data.data.author);
@@ -43,7 +40,7 @@ export const EditBook = () => {
     payload.author = newAuthor ? newAuthor : author;
     payload.notes = newNotes ? newNotes : notes;
 
-    await api.updateBookById(_id, payload)
+    await api.updateBookById(id as string, payload)
     .then(res => {
       window.alert(`${newTitle} has been successfully updated`)
       navigate('/books/list');

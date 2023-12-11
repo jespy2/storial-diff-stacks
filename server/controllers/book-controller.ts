@@ -4,7 +4,7 @@ import { IBookController, IBookQuery, IBook } from '../types';
 
 
 const bookController = {} as IBookController;
-
+const genericErrorMsg = 'An unexpected error occured'
 bookController.createBook = async (req, res): Promise<void> => {
     const newBook: IBook = req.body;
     
@@ -80,48 +80,63 @@ bookController.updateBook = async (req, res): Promise<void> => {
 }
 
 bookController.deleteBook = async (req, res): Promise<void> => {
-    await Book.findOneAndDelete({ _id: req.params.id }, (err: Error, book: IBookQuery) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
+    try {
+        const deleteBook = await Book.findOneAndDelete({ _id: req.params.id });
 
-        if (!book) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Book not found` })
+        if (!deleteBook) {
+            res.status(404).json({ success: false, error: `Book not found` });
+            return;
         }
-
-        return res.status(200).json({ success: true, data: book })
-    }).catch(err => console.log(err))
+        res.status(200).json({ success: true, data: deleteBook })
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).send(error.message)
+        } else {
+            res.status(500).send('An unexpected error occured')
+        }
+    }
 }
 
 bookController.getBookById = async (req, res): Promise<void> => {
-    await Book.findOne({ _id: req.params.id }, (err: Error, book: IBookQuery) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    try {
+        const findBook = await Book.findOne({ _id: req.params.id });
+        if (!findBook) {
+            res.status(404).json({ success: false, error: `Book not found` });
+            return;
         }
-
-        if (!book) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Book not found` })
+        res.status(200).json({ success: true, data: findBook });
+        return;
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).send(error.message)
+        } else {
+            res.status(500).send(genericErrorMsg)
         }
-        return res.status(200).json({ success: true, data: book })
-    }).catch(err => console.log(err))
+    }
 }
 
 bookController.getBooks = async (req, res): Promise<void> => {
-    await Book.find({}, (err: Error, books: IBookQuery[]) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    try {
+        const booksData: IBook[] = await Book.find({})
+    
+        if (!booksData) {
+            res.status(400).json({ success: false, error: 'Error: Books not found' });
+            return;
         }
-        if (!books.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Book not found` })
+        if (!booksData.length) {
+            res.status(404).json({ success: false, error: `Book not found` });
+            return;
         }
-        return res.status(200).json({ success: true, data: books })
-    }).catch(err => console.log(err))
+        res.status(200).json({ success: true, data: booksData })
+        return;
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).send(error.message)
+        } else {
+            res.status(500).send(genericErrorMsg)
+        }
+        
+    }
 }
 
 export default bookController;

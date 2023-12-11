@@ -7,9 +7,9 @@ const api = axios.create({
 
 export const insertBook = (payload: IBook) => api.post(`/book`, payload)
 export const getAllBooks = () => api.get(`/books`)
-export const updateBookById = (id: number, payload: IBook) => api.put(`/book/${id}`, payload)
-export const deleteBookById = (id: number) => api.delete(`/book/${id}`)
-export const getBookById = (id: number) => api.get(`/book/${id}`)
+export const updateBookById = (id: string, payload: IBook) => api.put(`/book/${id}`, payload)
+export const deleteBookById = (id: string) => api.delete(`/book/${id}`)
+export const getBookById = (id: string) => api.get(`/book/${id}`)
 
 const apis = {
     insertBook,
