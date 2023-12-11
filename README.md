@@ -28,6 +28,7 @@ In the future, I'd like to add the following:
   - Sorting books by field
   - Check box that removes book from library *to-read view* to *have-read view*
   - Add proper modals with branded styling instead of using alerts
+  - Add authorization/profile layer.
 
 ### Tech Stack
 React, TailwindCSS, Node, Express, MongoDB
