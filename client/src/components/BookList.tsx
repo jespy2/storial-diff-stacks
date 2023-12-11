@@ -46,7 +46,7 @@ export const BookList = ({ books }: { books: IBook[] }) => {
 												"Are you sure you wish to delete this book?"
 											)
 										)
-											handleDelete(book._id);
+										  book._id &&	handleDelete(book._id);
 									}}
 								/>
 							</td>
