@@ -8,9 +8,7 @@ Because this was a frontend-only role, I was only tasked with building the UI, b
 
 Since this was a takehome assessment, I had only a few days to go from design to prod and thus had a pretty simple app for the MVP.  For 2.0, I refactored the app with new features, cleaner/DRYer code, improved performance and accessibility, code safety through Typescript and testing, 
 
-<a href="http://example.com/" target="_blank">Hello, world!</a>
-
-## Original MVP (code can be found <a href="https://github.com/jespy2/storial" target="_blank">here</a>)
+## Original MVP (code can be found [here](https://github.com/jespy2/storial))
 
   - Offers basic CRUD functionality for tracking books user hears about and would like to read in the future.
   - Includes title, author and notes for each book tracked
@@ -29,7 +27,7 @@ In the future, I'd like to add the following:
   - Genre field that has preset options, but editable by user
   - Check box that removes book from library *to-read view* to *have-read view*
   - Add authorization/profile layer.
-  - Hosted DB with app running live
+  - Hosted DB with app running live.
 
 ### Tech Stack
 React, Typescript, TailwindCSS, Node, Express, MongoDB, React Testing Library
