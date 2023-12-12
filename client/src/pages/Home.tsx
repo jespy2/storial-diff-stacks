@@ -15,11 +15,11 @@ export const Home = () => {
           Track Books To Read Next!
         </h1>
         <Link to="books/list">
-          <button className="home-btn">view library</button>
+          <button className="home-btn" data-testid='view-library-button' >view library</button>
         </Link>
 
         <Link to="/books/create">
-          <button className="home-btn">quick add book</button>
+          <button className="home-btn" data-testid='add-book-button' >quick add book</button>
         </Link>
       </main>
     <Footer />      

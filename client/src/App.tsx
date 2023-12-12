@@ -1,26 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { AddBook } from './pages/AddBook';
-import { EditBook } from './pages/EditBook';
-import { Library } from './pages/Library';
-import NotFound from './pages/NotFound';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { routesConfig } from './App.routes';
 
 function App() {
+  const router = createBrowserRouter(routesConfig);
   return (
-    <Router>
       <div className="App">
         <section>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/books/list" element={<Library />} />
-            <Route path="/books/create" element={<AddBook />} />
-            <Route path="/books/update/:id" element={<EditBook />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <RouterProvider router={router} />
         </section>
       </div>
-    </Router>
   );
 }
 
