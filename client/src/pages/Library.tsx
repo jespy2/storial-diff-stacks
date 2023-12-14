@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { Footer } from "../components/Footer";
+import { BookTable, Footer } from "../components";
 
 import api from "../api";
-import { BookTable } from "../components/book-table/BookTable";
 import { IBook } from "../types/books";
 
 export const Library = () => {
