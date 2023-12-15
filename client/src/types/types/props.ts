@@ -1,6 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
-import { IBook } from "./books";
-import { ISortInfo } from "./sort";
+import { IBook, ISortInfo } from "../index";
 
 export interface IBookTableProps {
   books: IBook[];
@@ -8,7 +7,6 @@ export interface IBookTableProps {
 }
 
 export interface ITableBodyProps { 
-  books: IBook[];
   navigate: NavigateFunction;
 }
 

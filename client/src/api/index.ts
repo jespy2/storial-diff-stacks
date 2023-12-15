@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IBook } from '../types/books'
+import { IBook } from '../types/types/books'
 
 const api = axios.create({
     baseURL: 'http://localhost:8000/api',

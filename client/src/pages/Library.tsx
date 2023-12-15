@@ -1,21 +1,40 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { TypedUseSelectorHook, useSelector } from "react-redux";
 
-import { BookTable, Footer } from "../components";
+import { RootState } from "../redux/store";
+import { IBook, ModalType } from "../types";
 
-import api from "../api";
-import { IBook } from "../types/books";
+import { BookTable, Footer, Modal } from "../components";
+
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const Library = () => {
-	const [books, setBooks] = useState<IBook[]>([]);
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [modalContentType, setModalContentType] = useState<ModalType>(
+		ModalType.ADD_BOOK
+	);
 
-	useEffect(() => {
-		(async () => {
-			await api.getAllBooks().then((books) => {
-				setBooks(books.data.data);
-			});
-		})();
-	}, []);
+	const state = useAppSelector((state) => state);
+	const { books: booksState, isLoading } = state.books;
+
+	const handleSetModalContent = (modalState: ModalType) => {
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setModalContentType(ModalType.ADD_BOOK);
+		setIsModalOpen(false);
+	};
+
+	// useEffect(() => {
+	// 	booksState.success && setBooks(booksState.data);
+	// 	console.log(booksState.data);
+	// }, [booksState]);
+
+	// useEffect(() => {
+	// 	setIsModalOpen(false);
+	// }, [books]);
 
 	return (
 		<div className='home-container'>
@@ -27,19 +46,28 @@ export const Library = () => {
 				/>
 				<h1 className='page-header-title'>Your Library</h1>
 			</main>
-
-			{!books && <div>Loading...</div>}
-			{books && <BookTable books={books} setBooks={setBooks} />}
+			{!isLoading && <div>Loading...</div>}
+			{booksState && <BookTable />}
 
 			<section className='page-navbar px-4 '>
 				<Link to='/'>
 					<button className='page-btn'>home</button>
 				</Link>
 
-				<Link to='/books/create'>
-					<button className='page-btn'>quick add book</button>
-				</Link>
+				<button
+					className='page-btn'
+					onClick={() => handleSetModalContent(ModalType.ADD_BOOK)}
+				>
+					quick add book
+				</button>
 			</section>
+
+			{isModalOpen && (
+				<Modal
+					handleCloseModal={handleCloseModal}
+					modalContentType={modalContentType}
+				/>
+			)}
 
 			<Footer />
 		</div>

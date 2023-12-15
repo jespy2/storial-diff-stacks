@@ -65,3 +65,36 @@
 .singleSortIcon {
   @apply absolute top-1 h-5 w-5
 }
+
+/* MODALS */
+.modal-screen-background {
+  @apply z-10 absolute h-full w-full top-0 left-0 
+  flex flex-col items-center justify-center
+  bg-gray-500 bg-opacity-75
+}
+
+.modal-container {
+  @apply z-20 h-fit sm:w-1/2 lg:w-1/3
+  flex flex-col items-center justify-center p-4
+  border-2 border-blue-500 rounded-md bg-slate-50 shadow-lg
+}
+
+.modal-header {
+  @apply  justify-center flex-1 px-20 text-center
+}
+
+.modal-header-topbar {
+  @apply flex flex-col items-center relative
+}
+
+.modal-header-logo {
+  @apply w-8/12 sm:w-1/3 lg:w-1/2
+}
+
+.modal-header-title {
+  @apply text-3xl font-bold text-gray-400 pb-5 lowercase
+}
+
+.modal-close-btn {
+  @apply z-20 absolute top-5 right-10 h-5 w-5 text-blue-500 hover:text-gray-400
+}
