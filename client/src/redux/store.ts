@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {  bookReducer, modalSlice } from "./slices/";
+import {  bookReducer, modalReducer } from "./slices/";
 
 export const store = configureStore({
   reducer: {
     books: bookReducer,
-    modal: modalSlice.reducer,
+    modal: modalReducer,
   },
   devTools: true,
 });

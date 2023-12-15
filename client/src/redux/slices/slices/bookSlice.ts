@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IBookState } from "../../../types";
-import thunks from "../../thunks";
+import thunks from "../../thunks/books";
 
 const { insertBook, getAllBooks, updateBookById, deleteBookById } = thunks;
 

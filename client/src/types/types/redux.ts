@@ -1,8 +1,8 @@
-import { IBook } from '../index';
+import { IBook, ModalType } from '../index';
 
 export interface IModalState { 
   isOpen: boolean;
-  modalContentType: string;
+  modalContentType: ModalType;
 }
 
 export interface IBookState { 

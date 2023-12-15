@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IModalState } from "../../../types";
+import { IModalState, ModalType } from "../../../types";
 
 const initialModalState: IModalState = {
     isOpen: false,
-    modalContentType: "",
+    modalContentType: ModalType.NONE,
 };
 
 export const modalSlice = createSlice({
@@ -16,7 +16,10 @@ export const modalSlice = createSlice({
     },
     closeModal: (state) => {
       state.isOpen = false;
-      state.modalContentType = "";
+      state.modalContentType = ModalType.NONE;
     },
   },
 });
+
+export const { reducer: modalReducer, actions: modalActions } = modalSlice;
+export const { openModal, closeModal } = modalActions;
