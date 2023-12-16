@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { openModal } from "../redux/slices";
+import { ModalType } from "../types";
 import { Footer } from "../components";
 
 export const Home = () => {
+	const dispatch = useDispatch();
 	return (
 		<div className='home-container'>
 			<header>
@@ -18,8 +23,11 @@ export const Home = () => {
 					</button>
 				</Link>
 
-				<Link to='/books/create'>
-					<button className='home-btn' data-testid='add-book-button'>
+				<Link to='/books/list'>
+					<button
+						className='home-btn' data-testid='add-book-button'
+						onClick={() => dispatch(openModal({type: ModalType.ADD_BOOK}))}
+					>
 						quick add book
 					</button>
 				</Link>
