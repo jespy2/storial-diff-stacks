@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "./redux/store";
 import thunks from "./redux/thunks/books";
 import { routesConfig } from "./App.routes";
-import { ModalType } from "./types";
-import { openModal } from "./redux/slices";
 
 function App() {
 	const router = createBrowserRouter(routesConfig);
