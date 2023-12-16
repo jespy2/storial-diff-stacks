@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { RootState } from "../redux/store";
+import { AppDispatch } from "../redux/store";
 import { closeModal, openModal } from "../redux/slices";
 import { ModalType } from "../types";
-
+import { useAppSelector } from "../hooks";
 import { BookTable, Footer, Modal } from "../components";
 
-const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
 export const Library = () => {
+	const dispatch = useDispatch<AppDispatch>();
 	const state = useAppSelector((state) => state);
 	const { books: booksState, isLoading } = state.books;
 	const { isOpen } = state.modal;
@@ -39,7 +38,7 @@ export const Library = () => {
 
 				<button
 					className='page-btn'
-					onClick={() => openModal(ModalType.ADD_BOOK)}
+					onClick={() => dispatch(openModal(ModalType.ADD_BOOK))}
 				>
 					quick add book
 				</button>

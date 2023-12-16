@@ -1,14 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import api from "../../../api";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { AppDispatch } from "../../../../redux/store";
+import { closeModal } from "../../../../redux/slices";
+import thunks from "../../../../redux/thunks/books";
 
-export const AddBook = () => {
+export const AddBookBody = () => {
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [notes, setNotes] = useState("");
-	const navigate = useNavigate();
+	const dispatch = useDispatch<AppDispatch>();
 
 	//upon render, apply focus to title field
 	const titleField = useRef<HTMLInputElement | null>(null);
@@ -20,28 +21,14 @@ export const AddBook = () => {
 		e.preventDefault();
 		const payload = { title, author, notes };
 
-		await api.insertBook(payload).then((res) => {
-			navigate("/books/list");
+		await dispatch(thunks.insertBook(payload)).then(() => {
+			dispatch(closeModal());
 		});
-  };
-  
-  const header = () =>  (
-    <>
-      <div className='modal-header-topbar'>
-				<img
-					src='/storial-logo.png'
-					alt='Storial Logo'
-					className='modal-header-logo'
-        />      
-        {/* <button className="modal-close-btn"><XMarkIcon /></button> */}
-				<h1 className='modal-header-title'>Add a Book</h1>
-			</ div>
-    </>
-  )
+	};
 
-  const body = () => (
-    <>
-      <form className='flex flex-col' onSubmit={handleSubmit}>
+	return (
+		<>
+			<form className='flex flex-col' onSubmit={handleSubmit}>
 				<label
 					className='block text-gray-700 text-sm font-bold mb-2'
 					htmlFor='title'
@@ -79,11 +66,6 @@ export const AddBook = () => {
 				/>
 				<input type='submit' value='Add Book' className='submit-btn' />
 			</form>
-    </>
-  )
-
-  return {
-    header,
-    body
-  }
+		</>
+	);
 };

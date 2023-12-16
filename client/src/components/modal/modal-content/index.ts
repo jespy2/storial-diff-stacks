@@ -1,7 +1,5 @@
-import { ModalContent, ModalType } from "../../../types";
-import { AddBook } from "./AddBook";
-
-
+import { ModalType } from "../../../types";
+import { AddBook } from "./add-book/AddBook";
 
 export const modalContent = {
   [ModalType.ADD_BOOK]: AddBook,

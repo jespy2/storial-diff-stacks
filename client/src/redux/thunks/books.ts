@@ -1,13 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import apis from "../../api";
+import { IBook } from "../../types";
 
 const thunks = {
   insertBook: createAsyncThunk(
     "book/insertBook",
-    async (book: any, { rejectWithValue }) => {
+    async (book: IBook, { rejectWithValue }) => {
       try {
         const response = await apis.insertBook(book);
-        return response.data;
+        const data = {
+          response: response,
+          book: book,
+        }
+        console.log(data);
+        return data;
       } catch (err) {
         if (err instanceof Error) {
           rejectWithValue(err.message)

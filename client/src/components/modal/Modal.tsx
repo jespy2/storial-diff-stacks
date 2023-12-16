@@ -1,16 +1,9 @@
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { XMarkIcon } from "@heroicons/react/24/solid";
-
-import { RootState } from '../../redux/store';
-import { ModalFunction, ModalProps } from '../../types';
 import { modalContent } from './modal-content';
-import { closeModal } from '../../redux/slices';
-
-const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+import { useAppSelector } from '../../hooks';
 
 export const Modal = () => {
   const state = useAppSelector((state) => state);
-  const { isOpen, modalContentType } = state.modal;
+  const { modalContentType } = state.modal;
 
   let _modalContent
   if (modalContentType === "NONE") {
@@ -28,7 +21,6 @@ export const Modal = () => {
       <div className="modal-container">
         <div className="modal-header">
           {header()} 
-        <button className="modal-close-btn" onClick={() => closeModal()}><XMarkIcon /></button>
         </div>
         <div className="modal-body">{body()}</div>
       </div>

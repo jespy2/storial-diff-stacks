@@ -5,18 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "./redux/store";
 import thunks from "./redux/thunks/books";
 import { routesConfig } from "./App.routes";
+import { ModalType } from "./types";
+import { openModal } from "./redux/slices";
 
 function App() {
 	const router = createBrowserRouter(routesConfig);
 	const dispatch = useDispatch<AppDispatch>();
 	const state = useSelector((state) => state);
-	const initialFetch = useCallback(() => {
+	const fetchBooks = useCallback(() => {
 		dispatch(thunks.getAllBooks());
 	}, [dispatch]);
 
 	useEffect(() => {
-		initialFetch();
-	}, [initialFetch]);
+		fetchBooks();
+	}, [fetchBooks]);
 
 	console.log(state);
 

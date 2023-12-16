@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
 
-import { RootState } from "../../redux/store";
-import { IBookTableProps, ISortInfo } from "../../types";
+import { useAppSelector } from "../../hooks";
+import { ISortInfo } from "../../types";
 import { handleSort } from "./BookTable.config";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
-
-const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const BookTable = () => {
 	const [sortInfo, setSortInfo] = useState<ISortInfo>({

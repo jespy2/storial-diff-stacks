@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IBookState } from "../../../types";
+import { IBook, IBookState } from "../../../types";
 import thunks from "../../thunks/books";
 
 const { insertBook, getAllBooks, updateBookById, deleteBookById } = thunks;
@@ -18,9 +18,14 @@ export const bookSlice = createSlice({
   initialState: initialBookState,
   reducers: {
     insertBook: (state, action) => {
-      state.books.data.push(action.payload);
-      state.isLoading = false;
-      state.isError = false;
+      state = {
+        books: {
+          data: [...state.books.data, action.payload.book.data],
+          success: action.payload.success
+        },
+        isLoading: false,
+        isError: false
+      }
     },
     getAllBooks: (state, action) => {
       state.books = action.payload;
@@ -46,7 +51,10 @@ export const bookSlice = createSlice({
       .addCase(insertBook.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
-        state.books = action.payload;
+        state.books = {
+          data: [...state.books.data, action?.payload ? action?.payload.book : {} as IBook],
+          success: action.payload?.response.data.success
+        };
       })
       .addCase(insertBook.rejected, (state) => {
         state.isLoading = false;
