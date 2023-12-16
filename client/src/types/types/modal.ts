@@ -1,10 +1,12 @@
 export enum ModalType { 
-  ADD_BOOK = 'ADD_BOOK',  
+  ADD_BOOK = 'ADD_BOOK',
+  EDIT_BOOK = 'EDIT_BOOK',
+  DELETE_BOOK = 'NONE',
   NONE = 'NONE',
 }
 
 export type ModalFunction = () => {
-  header: () => JSX.Element;
+  title: string;
   body: () => JSX.Element;
 };
 
@@ -14,6 +16,7 @@ export type ModalContentType = {
 
 export interface ModalContent {
   ADD_BOOK: ModalContentType[ModalType.ADD_BOOK];
+  EDIT_BOOK: ModalContentType[ModalType.EDIT_BOOK];
   NONE: ModalContentType[ModalType.NONE];
 }
 

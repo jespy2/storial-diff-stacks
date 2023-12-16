@@ -5,7 +5,7 @@ import { AppDispatch } from "../../../../redux/store";
 import { closeModal } from "../../../../redux/slices";
 import thunks from "../../../../redux/thunks/books";
 
-export const AddBookBody = () => {
+export const AddBook = () => {
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [notes, setNotes] = useState("");
@@ -26,7 +26,7 @@ export const AddBookBody = () => {
 		});
 	};
 
-	return (
+	const body = () => (
 		<>
 			<form className='flex flex-col' onSubmit={handleSubmit}>
 				<label
@@ -68,4 +68,8 @@ export const AddBookBody = () => {
 			</form>
 		</>
 	);
+	return {
+		title: "Add a book",
+		body,
+	};
 };

@@ -12,7 +12,6 @@ const thunks = {
           response: response,
           book: book,
         }
-        console.log(data);
         return data;
       } catch (err) {
         if (err instanceof Error) {
@@ -43,7 +42,11 @@ const thunks = {
     async (book: any, { rejectWithValue }) => {
       try {
         const response = await apis.updateBookById(book._id, book);
-        return response.data;
+        const data = {
+          response: response,
+          book: book,
+        }
+        return data;
       } catch (err) {
         if (err instanceof Error) {
           rejectWithValue(err.message)
@@ -58,7 +61,11 @@ const thunks = {
     async (id: any, { rejectWithValue }) => {
       try {
         const response = await apis.deleteBookById(id);
-        return response.data;
+        const data = {
+          response: response,
+          book: id,
+        }
+        return data;
       } catch (err) {
         if (err instanceof Error) {
           rejectWithValue(err.message)
@@ -71,8 +78,10 @@ const thunks = {
   getBookById: createAsyncThunk(
     "book/getBookById",
     async (id: any, { rejectWithValue }) => {
+      console.log('getBookById',id)
       try {
         const response = await apis.getBookById(id);
+        console.log('getBookById',response)
         return response.data;
       } catch (err) {
         if (err instanceof Error) {

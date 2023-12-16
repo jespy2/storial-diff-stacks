@@ -4,7 +4,7 @@ import { AppDispatch } from "../../../../redux/store";
 import { closeModal } from "../../../../redux/slices";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-export const AddBookHeader = () => {
+export const ModalHeader = ({ title }: { title: string }) => {
 	const dispatch = useDispatch<AppDispatch>();
 
 	return (
@@ -15,7 +15,7 @@ export const AddBookHeader = () => {
 					alt='Storial Logo'
 					className='modal-header-logo'
 				/>
-				<h1 className='modal-header-title'>Add a Book</h1>
+				<h1 className='modal-header-title'>{title}</h1>
 				<button
 					className='modal-close-btn'
 					onClick={() => dispatch(closeModal())}

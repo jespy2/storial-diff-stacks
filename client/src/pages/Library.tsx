@@ -38,7 +38,7 @@ export const Library = () => {
 
 				<button
 					className='page-btn'
-					onClick={() => dispatch(openModal(ModalType.ADD_BOOK))}
+					onClick={() => dispatch(openModal({type: ModalType.ADD_BOOK}))}
 				>
 					quick add book
 				</button>

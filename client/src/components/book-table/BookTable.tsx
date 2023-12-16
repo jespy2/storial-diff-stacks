@@ -34,7 +34,7 @@ export const BookTable = () => {
 			{!isLoading && (
 				<table className='relative w-full table '>
 					<TableHeader handleClick={handleClick} sortInfo={sortInfo} />
-					<TableBody navigate={navigate} />
+					<TableBody />
 				</table>
 			)}
 		</div>

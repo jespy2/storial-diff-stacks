@@ -32,14 +32,13 @@ export const bookSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
     },
-    deleteBookById: (state, action) => {
-      const index = state.books.data.findIndex((book) => book._id === action.payload);
-      state.books.data.splice(index, 1);
-
+    deleteBookById: (state, action) => {      
+      const newBookData = state.books.data.filter((book) => book._id !== action.payload?.book);
+      state.books.data = newBookData;
     },
     updateBookById: (state, action) => {
       const index = state.books.data.findIndex((book) => book._id === action.payload._id);
-      state.books.data[index] = action.payload;
+      state.books.data[index] = action.payload.book;
     }
   },
   extraReducers: (builder) => {
@@ -80,9 +79,10 @@ export const bookSlice = createSlice({
         state.isError = false;
       })
       .addCase(deleteBookById.fulfilled, (state, action) => {
+        const newBookData = state.books.data.filter((book) => book._id !== action.payload?.book);
         state.isLoading = false;
         state.isError = false;
-        state.books = action.payload;
+        state.books.data = newBookData;
       })
       .addCase(deleteBookById.rejected, (state) => {
         state.isLoading = false;
@@ -94,9 +94,10 @@ export const bookSlice = createSlice({
         state.isError = false;
       })
       .addCase(updateBookById.fulfilled, (state, action) => {
+        const index = state.books.data.findIndex((book) => book._id === action.payload?.book._id);
         state.isLoading = false;
         state.isError = false;
-        state.books = action.payload;
+        state.books.data[index] = action.payload?.book;
       })
       .addCase(updateBookById.rejected, (state) => {
         state.isLoading = false;
