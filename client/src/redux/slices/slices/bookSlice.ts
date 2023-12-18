@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBook, IBookState, SortDirection, SortItem } from "../../../types";
 import thunks from "../../thunks/books";
 

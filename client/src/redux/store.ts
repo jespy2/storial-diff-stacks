@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {  bookReducer, modalReducer } from "./slices/";
+import {  alertReducer, bookReducer, modalReducer } from "./slices/";
 
 export const store = configureStore({
   reducer: {
+    alert: alertReducer,
     books: bookReducer,
     modal: modalReducer,
   },

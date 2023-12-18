@@ -1,7 +1,7 @@
 import { modalContent } from "./modal-content";
 import { useAppSelector } from "../../hooks";
 
-import { ModalHeader } from "./modal-content/modal-content/ModalHeader";
+import { ModalHeader } from "./modal-content/components/ModalHeader";
 
 export const Modal = () => {
 	const state = useAppSelector((state) => state);

@@ -4,7 +4,7 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 import { useAppSelector } from "../../hooks";
 import { ModalType } from "../../types";
-import { openModal } from "../../redux/slices";
+import { openAlert, openModal } from "../../redux/slices";
 import thunks from "../../redux/thunks/books";
 import { AppDispatch } from "../../redux/store";
 
@@ -30,14 +30,10 @@ export const TableBody = () => {
 						<td>
 							<TrashIcon
 								className='link-icon'
-								onClick={async () => {
-									if (
-										window.confirm("Are you sure you wish to delete this book?")
-									)
-									{
-										dispatch(thunks.deleteBookById(book._id));
-									}
-								}}
+									onClick={() => dispatch(openAlert({
+										message: "Are you sure you want to delete this book?", 
+										onConfirm: () => dispatch(thunks.deleteBookById(book._id))
+									}))}
 							/>
 						</td>
 					</tr>

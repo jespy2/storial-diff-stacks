@@ -6,6 +6,12 @@ export interface IModalState {
   id?: string;
 }
 
+export interface IAlertState {
+  isOpen: boolean;
+  message: string;
+  onConfirm: () => void;
+};
+
 export enum SortItem {
   TITLE = 'title',
   AUTHOR = 'author',
