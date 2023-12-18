@@ -18,8 +18,6 @@ function App() {
 		fetchBooks();
 	}, [fetchBooks]);
 
-	console.log(state);
-
 	return (
 		<div className='App'>
 			<section>

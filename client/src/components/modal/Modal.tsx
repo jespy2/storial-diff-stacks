@@ -6,7 +6,6 @@ import { ModalHeader } from "./modal-content/modal-content/ModalHeader";
 export const Modal = () => {
 	const state = useAppSelector((state) => state);
 	const { modalContentType } = state.modal;
-  console.log(state.modal)
 	let _modalContent;
 	if (modalContentType === "NONE") {
 		_modalContent = {
@@ -14,7 +13,6 @@ export const Modal = () => {
 			body: () => <></>,
 		};
   } else {
-    console.log(modalContentType);
 		_modalContent = modalContent[modalContentType]();
 	}
 	const { title, body } = _modalContent;

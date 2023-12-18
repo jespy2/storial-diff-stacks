@@ -78,10 +78,8 @@ const thunks = {
   getBookById: createAsyncThunk(
     "book/getBookById",
     async (id: any, { rejectWithValue }) => {
-      console.log('getBookById',id)
       try {
         const response = await apis.getBookById(id);
-        console.log('getBookById',response)
         return response.data;
       } catch (err) {
         if (err instanceof Error) {

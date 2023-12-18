@@ -6,10 +6,25 @@ export interface IModalState {
   id?: string;
 }
 
+export enum SortItem {
+  TITLE = 'title',
+  AUTHOR = 'author',
+}
+
+export enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc',
+  NONE = 'none',
+}
+
 export interface IBookState { 
   books: {
     success: boolean;
-    data: IBook[]
+    data: IBook[];
+    sortInfo: {
+      sortBy: SortItem | '';
+      sortDirection: SortDirection;
+    }
   };
   isLoading: boolean;
   isError: boolean;
