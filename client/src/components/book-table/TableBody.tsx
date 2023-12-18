@@ -32,7 +32,8 @@ export const TableBody = () => {
 								className='link-icon'
 									onClick={() => dispatch(openAlert({
 										message: "Are you sure you want to delete this book?", 
-										onConfirm: () => dispatch(thunks.deleteBookById(book._id))
+										onConfirm: () => dispatch(thunks.deleteBookById(book._id)),
+										notificationMessage: `${book.title} has been removed from your library`
 									}))}
 							/>
 						</td>

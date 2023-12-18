@@ -6,8 +6,7 @@ import { AppDispatch } from "../redux/store";
 import { closeModal, openModal } from "../redux/slices";
 import { ModalType } from "../types";
 import { useAppSelector } from "../hooks";
-import { BookTable, Footer, Modal } from "../components";
-import { Alert } from "../components/alert/Alert";
+import { Alert, BookTable, Footer, Modal, Notification } from "../components";
 
 export const Library = () => {
 	const dispatch = useDispatch<AppDispatch>();
@@ -15,6 +14,7 @@ export const Library = () => {
 	const { books: booksState, isLoading } = state.books;
 	const { isOpen: isModalOpen } = state.modal;
 	const { isOpen: isAlertOpen } = state.alert;
+	const { isOpen: isNotificationOpen } = state.notification;
 
 	useEffect(() => {
 		closeModal();
@@ -46,6 +46,10 @@ export const Library = () => {
 				</button>
 			</section>
 
+			{isNotificationOpen && (
+				<Notification />
+			)}
+
 			{isAlertOpen && (
 				<Alert />
 			)}
@@ -53,8 +57,6 @@ export const Library = () => {
 			{isModalOpen && (
 				<Modal />
 			)}
-
-			
 
 			<Footer />
 		</div>

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../../redux/store";
-import { closeModal } from "../../../../redux/slices";
+import { closeModal, openNotification } from "../../../../redux/slices";
 import { useAppSelector } from "../../../../hooks";
 import thunks from "../../../../redux/thunks/books";
 
@@ -41,7 +41,7 @@ export const EditBook = () => {
 		payload.notes = newNotes ? newNotes : notes;
 
 		await dispatch(thunks.updateBookById(payload)).then(() => {
-			window.alert(`${newTitle} has been successfully updated`);
+			dispatch(openNotification({ message: `${newTitle} has been successfully updated` }));
 			dispatch(closeModal());
 		});
 	};

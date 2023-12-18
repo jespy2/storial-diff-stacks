@@ -10,6 +10,12 @@ export interface IAlertState {
   isOpen: boolean;
   message: string;
   onConfirm: () => void;
+  notificationMessage: string;
+};
+
+export interface INotificationState {
+  isOpen: boolean;
+  message: string;
 };
 
 export enum SortItem {

@@ -3,7 +3,7 @@ import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
 
 import { AppDispatch } from "../../redux/store";
 import { useAppSelector } from "../../hooks";
-import { closeAlert } from "../../redux/slices";
+import { closeAlert, openNotification } from "../../redux/slices";
 
 export const Alert = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,6 +13,7 @@ export const Alert = () => {
   const onConfirm = () => { 
     alert.onConfirm();
     dispatch(closeAlert());
+		dispatch(openNotification({message: alert.notificationMessage}));
   }
   return (
     <div className="alert-screen-background" >

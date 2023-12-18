@@ -138,3 +138,30 @@
   bg-blue-500 hover:bg-gray-400 p-1  rounded-md shadow-lg 
   text-white font-extrabold uppercase 
 }
+
+.notification {
+  @apply z-50 absolute top-10 right-24 h-fit w-80 
+  flex flex-col items-center justify-center
+  animate-slide-in
+  bg-blue-500 rounded-md shadow-lg
+}
+
+.notification body {
+  @apply flex flex-row justify-around items-center p-3
+  w-full text-white
+}
+
+.notification-icon {
+  @apply h-7 w-7 ml-1
+  text-white
+}
+
+.notification-close-icon {
+  @apply h-5 w-5 mr-1
+  text-white
+}
+
+.notification body > p {
+  @apply ml-3
+  text-sm font-bold text-white text-center
+}

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../../redux/store";
-import { closeModal } from "../../../../redux/slices";
+import { closeModal, openNotification } from "../../../../redux/slices";
 import thunks from "../../../../redux/thunks/books";
 
 export const AddBook = () => {
@@ -22,6 +22,7 @@ export const AddBook = () => {
 		const payload = { title, author, notes };
 
 		await dispatch(thunks.insertBook(payload)).then(() => {
+			dispatch(openNotification({ message: `${title} has been added to your library` }));
 			dispatch(closeModal());
 		});
 	};
