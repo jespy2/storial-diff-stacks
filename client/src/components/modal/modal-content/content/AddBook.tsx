@@ -32,7 +32,7 @@ export const AddBook = () => {
 		<>
 			<form className='flex flex-col' onSubmit={handleSubmit}>
 				<label
-					className='block text-gray-700 text-sm font-bold mb-2'
+					className='block text-gray-400 text-sm font-bold mb-2'
 					htmlFor='title'
 				>
 					Title
@@ -47,20 +47,30 @@ export const AddBook = () => {
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
 				/>
-				<label>Author</label>
+				<label
+					className='block text-gray-400 text-sm font-bold mb-2'
+					htmlFor='author'
+				>
+					Author
+				</label>
 				<input
 					type='text'
-					name='Author'
-					id='Author'
+					name='author'
+					id='author'
 					className='textfield focus:outline-none focus:shadow-outline'
 					required
 					value={author}
 					onChange={(e) => setAuthor(e.target.value)}
 				/>
-				<label>Notes</label>
+				<label
+					className='block text-gray-400 text-sm font-bold mb-2'
+					htmlFor='notes'
+				>
+					Notes
+				</label>
 				<textarea
-					name='Notes'
-					id='Notes'
+					name='notes'
+					id='notes'
 					className='textfield focus:outline-none focus:shadow-outline h-28'
 					required
 					value={notes}
