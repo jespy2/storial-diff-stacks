@@ -3,4 +3,5 @@ export interface IBook {
   title: string;
   author: string;
   notes: string;
+  status: 'read' | 'unread';
 }

@@ -28,6 +28,22 @@ export const TableHeader = () => {
 				<tr>
 					<th
 						className='sticky top-0 px-6 py-3 bg-blue-300 hover:bg-gray-400'
+						// onClick={() =>
+						// 	dispatch(bookSlice.actions.sortBooks({ sortBy: SortItem.TITLE }))
+						// }
+					>
+						Read
+						{/* <span className='sortIcons'>
+							<ChevronUpIcon
+								className={sortIconClass(SortItem.TITLE, SortDirection.DESC)}
+							/>
+							<ChevronDownIcon
+								className={sortIconClass(SortItem.TITLE, SortDirection.ASC)}
+							/>
+						</span> */}
+					</th>
+					<th
+						className='sticky top-0 px-6 py-3 bg-blue-300 hover:bg-gray-400'
 						onClick={() =>
 							dispatch(bookSlice.actions.sortBooks({ sortBy: SortItem.TITLE }))
 						}

@@ -7,6 +7,7 @@ import { ModalType } from "../../types";
 import { openAlert, openModal } from "../../redux/slices";
 import thunks from "../../redux/thunks/books";
 import { AppDispatch } from "../../redux/store";
+import { Pill } from "../index";
 
 export const TableBody = () => {
 	const dispatch: AppDispatch = useDispatch();
@@ -18,6 +19,11 @@ export const TableBody = () => {
 				bookState.map((book) => (
 				<tbody className='border-separate space-y-6 p-5 mt-10'>
 					<tr className='p-3 text-sm' key={book._id as Key}>
+						<td className='border-r p-3'>
+							<div className='pill'>
+								<Pill status={book.status} id={book._id as string} />
+							</div>
+						</td>
 						<td className='border-r p-3'>{book.title}</td>
 						<td className='border-r p-3'>{book.author}</td>
 						<td className='p-3'>{book.notes}</td>

@@ -5,6 +5,8 @@ import { AppDispatch } from "../../../../redux/store";
 import { closeModal, openNotification } from "../../../../redux/slices";
 import { useAppSelector } from "../../../../hooks";
 import thunks from "../../../../redux/thunks/books";
+import { IBook } from "../../../../types";
+import { platform } from "os";
 
 export const EditBook = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,6 +16,7 @@ export const EditBook = () => {
   const [title, setTitle] = useState<string>("");
 	const [author, setAuthor] = useState<string>("");
 	const [notes, setNotes] = useState<string>("");
+	const [status, setStatus] = useState<"read" | "unread">("unread");
 	const [newTitle, setNewTitle] = useState<string>("");
 	const [newAuthor, setNewAuthor] = useState<string>("");
 	const [newNotes, setNewNotes] = useState<string>("");
@@ -27,7 +30,8 @@ export const EditBook = () => {
           set_Id(book.payload.data._id);
           setTitle(book.payload.data.title);
           setAuthor(book.payload.data.author);
-          setNotes(book.payload.data.notes);
+					setNotes(book.payload.data.notes);
+					setStatus(book.payload.data.status);
           titleField.current && titleField.current.focus();
         });
 		})();
@@ -35,11 +39,12 @@ export const EditBook = () => {
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		const payload = { _id, title, author, notes };
+		const payload: IBook = { _id, title, author, notes, status};
 		payload.title = newTitle ? newTitle : title;
 		payload.author = newAuthor ? newAuthor : author;
 		payload.notes = newNotes ? newNotes : notes;
-
+		payload.status = status;
+		
 		await dispatch(thunks.updateBookById(payload)).then(() => {
 			dispatch(openNotification({ message: `${newTitle} has been successfully updated` }));
 			dispatch(closeModal());

@@ -66,8 +66,11 @@ export const bookSlice = createSlice({
       state.books.sortInfo.sortBy = sortBy;
       state.books.sortInfo.sortDirection = newSortDirection;
       state.books.data = sortedBooks;
+    },
+    toggleBookStatus: (state, action: PayloadAction<{ id: string }>) => {
+      const index = state.books.data.findIndex((book) => book._id === action.payload.id);
+      state.books.data[index].status = state.books.data[index].status === 'read' ? 'unread' : 'read';
     }
-
   },
   extraReducers: (builder) => {
     builder
@@ -137,4 +140,5 @@ export const bookSlice = createSlice({
     });
   }
 });
-export const { reducer: bookReducer } = bookSlice;
+export const { reducer: bookReducer, actions: bookActions } = bookSlice;
+export const { sortBooks, toggleBookStatus } = bookActions;

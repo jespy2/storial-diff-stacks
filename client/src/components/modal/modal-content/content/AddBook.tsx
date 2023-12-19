@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../../redux/store";
 import { closeModal, openNotification } from "../../../../redux/slices";
 import thunks from "../../../../redux/thunks/books";
+import { IBook } from "../../../../types";
 
 export const AddBook = () => {
 	const [title, setTitle] = useState("");
@@ -19,7 +20,7 @@ export const AddBook = () => {
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		const payload = { title, author, notes };
+		const payload:IBook = { title, author, notes, status: 'unread' };
 
 		await dispatch(thunks.insertBook(payload)).then(() => {
 			dispatch(openNotification({ message: `${title} has been added to your library` }));
