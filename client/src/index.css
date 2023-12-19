@@ -193,3 +193,14 @@
 .toggle-light-icon {
   @apply h-8 w-8 text-blue-500 hover:text-gray-400
 }
+
+.tooltip {
+  @apply hidden group-hover:block
+  z-20 absolute right-16 w-52
+  bg-slate-400 p-2 rounded-md shadow-lg
+  text-center 
+}
+.tooltip::after {
+  @apply absolute top-1/2 left-full -mt-2 
+  border-8 border-transparent border-t-transparent border-r-transparent border-b-transparent border-l-slate-400
+}

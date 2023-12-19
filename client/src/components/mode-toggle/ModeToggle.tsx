@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 
+import { Tooltip } from "../index";
+
 export const ModeToggle = () => {
   const [darkMode, setDarkMode] = useState(localStorage.getItem('color-theme') === 'dark');
   
@@ -17,7 +19,8 @@ export const ModeToggle = () => {
   }
 
   return (
-    <div className="mode-toggle">
+    <div className="mode-toggle group">
+      <Tooltip message="Toggle dark/light mode" />
       <button onClick={(e) => handleToggle(e)}>
         <MoonIcon className={`toggle-dark-icon ${darkMode && 'hidden'}`} />
         <SunIcon className={`toggle-light-icon ${!darkMode && 'hidden'}`} />

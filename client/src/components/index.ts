@@ -5,3 +5,4 @@ export { Modal } from './modal/Modal';
 export { ModeToggle } from './mode-toggle/ModeToggle';
 export { Notification } from './notification/Notification';
 export { Pill } from './pill/Pill';
+export { Tooltip } from './tooltip/Tooltip';
