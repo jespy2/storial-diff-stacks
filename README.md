@@ -52,3 +52,6 @@ Once your dependencies are installed, you will need to open three terminals and 
   
   3. **Client** 
     - Navigate to ./server directory: ```npm run start```
+
+### Contact Me
+Reach out, get to know me or check out more of my work:  [My Portfolio Site](https://github.com/jespy2/storial)
