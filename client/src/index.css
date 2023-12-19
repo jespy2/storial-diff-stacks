@@ -173,7 +173,7 @@
 }
 
 .pill-unread {
-  @apply bg-white rounded-lg border-blue-500 border shadow-md
+  @apply bg-white rounded-lg border-blue-300 border shadow-md
   px-2 py-1 
-  text-center text-blue-500 font-bold text-sm
+  text-center text-blue-300 font-bold text-sm
 }
