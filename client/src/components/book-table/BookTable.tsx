@@ -1,8 +1,4 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import { useAppSelector } from "../../hooks";
-import { ISortInfo } from "../../types";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
 

@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 
 import { openModal } from "../redux/slices";
 import { ModalType } from "../types";
-import { Footer } from "../components";
+import { Footer, ModeToggle } from "../components";
 
 export const Home = () => {
 	const dispatch = useDispatch();
 	return (
 		<div className='home-container'>
+			<ModeToggle />
 			<header>
 				<title>Storial</title>
 				<link rel='icon' href='/favicon.ico' />

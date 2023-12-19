@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.App {
+  @apply dark:bg-black dark:text-white
+}
+
 .home-btn {
   @apply bg-blue-500 hover:bg-gray-400 p-5 text-white font-extrabold rounded-md shadow-lg uppercase my-8
 }
@@ -176,4 +180,14 @@
   @apply bg-white rounded-lg border-blue-300 border shadow-md
   px-2 py-1 
   text-center text-blue-300 font-bold text-sm
+}
+.mode-toggle {
+  @apply absolute top-5 right-8
+}
+.toggle-dark-icon {
+  @apply h-8 w-8 text-blue-500 hover:text-gray-400
+}
+
+.toggle-light-icon {
+  @apply h-8 w-8 text-blue-500 hover:text-gray-400
 }

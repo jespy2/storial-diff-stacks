@@ -24,6 +24,7 @@ For 2.0, I refactored the app with new features, cleaner/DRYer code, improved pe
   - Audited and refactored to improve accessibility and performance.
   - Sorting books by field
   - Add proper modals with branded styling instead of using alerts
+  - Added pills to display read/unread status that also act as toggle buttons for said status
   - Dark mode
 
 ## Stretch Features
@@ -31,7 +32,6 @@ For 2.0, I refactored the app with new features, cleaner/DRYer code, improved pe
 In the future, I'd like to add the following:
   - Additional fields such as date entered and genre
   - Genre field that has preset options, but editable by user
-  - Check box or toggle button that removes book from library *to-read view* to *have-read view*
   - Add authorization/profile layer.
   - Hosted DB with app running live.
 

@@ -7,6 +7,7 @@ import { closeModal, openModal } from "../redux/slices";
 import { ModalType } from "../types";
 import { useAppSelector } from "../hooks";
 import { Alert, BookTable, Footer, Modal, Notification } from "../components";
+import { ModeToggle } from "../components/mode-toggle/ModeToggle";
 
 export const Library = () => {
 	const dispatch = useDispatch<AppDispatch>();
@@ -22,6 +23,7 @@ export const Library = () => {
 
 	return (
 		<div className='home-container'>
+			<ModeToggle />
 			<main className='page-header-container'>
 				<img
 					src='/storial-logo.png'
