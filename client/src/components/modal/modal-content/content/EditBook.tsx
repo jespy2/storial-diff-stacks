@@ -6,7 +6,6 @@ import { closeModal, openNotification } from "../../../../redux/slices";
 import { useAppSelector } from "../../../../hooks";
 import thunks from "../../../../redux/thunks/books";
 import { IBook } from "../../../../types";
-import { platform } from "os";
 
 export const EditBook = () => {
   const dispatch = useDispatch<AppDispatch>();

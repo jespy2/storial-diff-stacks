@@ -21,7 +21,7 @@ export const TableBody = () => {
 					<tr className='p-3 text-sm' key={book._id as Key}>
 						<td className='border-r p-3'>
 							<div className='pill'>
-								<Pill status={book.status} id={book._id as string} />
+								<Pill book={book} />
 							</div>
 						</td>
 						<td className='border-r p-3'>{book.title}</td>

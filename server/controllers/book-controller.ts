@@ -65,7 +65,9 @@ bookController.updateBook = async (req, res): Promise<void> => {
         book.title = body.title
         book.author = body.author
         book.notes = body.notes
+        book.status = body.status
             await book.save();
+            
             res.status(200).json({
                 success: true,
                 id: book._id,

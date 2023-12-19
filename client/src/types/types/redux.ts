@@ -21,6 +21,7 @@ export interface INotificationState {
 export enum SortItem {
   TITLE = 'title',
   AUTHOR = 'author',
+  STATUS = 'status',
 }
 
 export enum SortDirection {
