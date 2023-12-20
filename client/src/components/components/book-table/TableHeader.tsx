@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
-import { AppDispatch } from "../../redux/store";
-import { bookSlice } from "../../redux/slices";
-import { SortDirection, SortItem } from "../../types";
-import { useAppSelector } from "../../hooks";
+import { AppDispatch } from "../../../redux/store";
+import { bookSlice } from "../../../redux/slices";
+import { SortDirection, SortItem } from "../../../types";
+import { useAppSelector } from "../../../hooks";
 
 export const TableHeader = () => {
 	const dispatch = useDispatch<AppDispatch>();
@@ -66,13 +66,13 @@ export const TableHeader = () => {
 					>
 						Author
 						<span className='sortIcons'>
-              <ChevronUpIcon
+							<ChevronUpIcon
 								className={sortIconClass(SortItem.AUTHOR, SortDirection.DESC)}
-              />
-              <ChevronDownIcon
+							/>
+							<ChevronDownIcon
 								className={sortIconClass(SortItem.AUTHOR, SortDirection.ASC)}
-              />
-            </span>
+							/>
+						</span>
 					</th>
 					<th className='sticky top-0 px-6 py-3 bg-blue-300'>Notes</th>
 					<th className='sticky top-0 px-6 py-3 bg-blue-300'></th>

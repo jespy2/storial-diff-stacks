@@ -1,8 +1,8 @@
-export { Alert } from './alert/Alert';
-export { BookTable } from './book-table/BookTable';
-export { Footer } from './footer/Footer';
-export { Modal } from './modal/Modal';
-export { ModeToggle } from './mode-toggle/ModeToggle';
-export { Notification } from './notification/Notification';
-export { Pill } from './pill/Pill';
-export { Tooltip } from './tooltip/Tooltip';
+export { Alert } from './components/alert/Alert';
+export { BookTable } from './components/book-table/BookTable';
+export { Footer } from './components/footer/Footer';
+export { Modal } from './components/modal/Modal';
+export { ModeToggle } from './components/mode-toggle/ModeToggle';
+export { Notification } from './components/notification/Notification';
+export { Pill } from './components/pill/Pill';
+export { Tooltip } from './components/tooltip/Tooltip';

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
-import { AppDispatch } from "../../../../redux/store";
-import { closeModal } from "../../../../redux/slices";
+import { AppDispatch } from "../../../../../redux/store";
+import { closeModal } from "../../../../../redux/slices";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
 export const ModalHeader = ({ title }: { title: string }) => {

@@ -1,4 +1,4 @@
-import { ModalType } from "../../../types";
+import { ModalType } from "../../../../types";
 import { AddBook } from "./content/AddBook";
 import { EditBook } from "./content/EditBook";
 

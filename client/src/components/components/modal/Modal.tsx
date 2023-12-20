@@ -1,5 +1,5 @@
 import { modalContent } from "./modal-content";
-import { useAppSelector } from "../../hooks";
+import { useAppSelector } from "../../../hooks";
 
 import { ModalHeader } from "./modal-content/components/ModalHeader";
 
@@ -9,10 +9,10 @@ export const Modal = () => {
 	let _modalContent;
 	if (modalContentType === "NONE") {
 		_modalContent = {
-			header: '',
+			header: "",
 			body: () => <></>,
 		};
-  } else {
+	} else {
 		_modalContent = modalContent[modalContentType]();
 	}
 	const { title, body } = _modalContent;

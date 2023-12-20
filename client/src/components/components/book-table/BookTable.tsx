@@ -1,9 +1,8 @@
-import { useAppSelector } from "../../hooks";
+import { useAppSelector } from "../../../hooks";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
 
 export const BookTable = () => {
-
 	const state = useAppSelector((state) => state);
 	const { isLoading } = state.books;
 
@@ -12,7 +11,7 @@ export const BookTable = () => {
 			{isLoading && <div>Collecting your books from the shelves...</div>}
 			{!isLoading && (
 				<table className='relative w-full table '>
-					<TableHeader  />
+					<TableHeader />
 					<TableBody />
 				</table>
 			)}
