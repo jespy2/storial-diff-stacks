@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NotFound() {
+export const NotFound = () => {
   return (
     <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
       <img src="/storial-logo.png" alt="Storial Logo" className="header-logo" />

@@ -2,12 +2,18 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { AppDispatch } from "../redux/store";
-import { closeModal, openModal } from "../redux/slices";
-import { ModalType } from "../types";
-import { useAppSelector } from "../hooks";
-import { Alert, BookTable, Footer, Modal, Notification } from "../components";
-import { ModeToggle } from "../components/mode-toggle/ModeToggle";
+import { AppDispatch } from "../../redux/store";
+import { closeModal, openModal } from "../../redux/slices";
+import { ModalType } from "../../types";
+import { useAppSelector } from "../../hooks";
+import {
+	Alert,
+	BookTable,
+	Footer,
+	Modal,
+	Notification,
+} from "../../components";
+import { ModeToggle } from "../../components/mode-toggle/ModeToggle";
 
 export const Library = () => {
 	const dispatch = useDispatch<AppDispatch>();
@@ -42,23 +48,17 @@ export const Library = () => {
 
 				<button
 					className='page-btn'
-					onClick={() => dispatch(openModal({type: ModalType.ADD_BOOK}))}
+					onClick={() => dispatch(openModal({ type: ModalType.ADD_BOOK }))}
 				>
 					quick add book
 				</button>
 			</section>
 
-			{isNotificationOpen && (
-				<Notification />
-			)}
+			{isNotificationOpen && <Notification />}
 
-			{isAlertOpen && (
-				<Alert />
-			)}
+			{isAlertOpen && <Alert />}
 
-			{isModalOpen && (
-				<Modal />
-			)}
+			{isModalOpen && <Modal />}
 
 			<Footer />
 		</div>
