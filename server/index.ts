@@ -1,22 +1,25 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
 import cors from 'cors'
 
+import cookieParser from 'cookie-parser';
 import DB from './db'
-import bookRouter from './routes/book-router.ts'
+import { authRouter, bookRouter} from './routes'
 
-const app = express()
-const apiPort =8000
+const app = express();
+const apiPort = 8000;
 
-app.use(express.urlencoded({ extended: true }))
-app.use(cors())
-app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.json());
+app.use(cookieParser());
 
-DB.on('error', console.error.bind(console, 'MongoDB connection error:'))
+DB.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!')
-})
+// app.get('/', (req: Request, res: Response) => {
+//     res.send('Hello World!')
+// })
 
-app.use('/api', bookRouter)
+app.use('/', authRouter);
+app.use('/api', bookRouter);
 
-app.listen(apiPort, () => console.log(`🤖 Server running on port ${apiPort} 🚀`))
+app.listen(apiPort, () => console.log(`🤖 Server running on port ${apiPort} 🚀`));

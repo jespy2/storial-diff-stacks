@@ -1,6 +1,6 @@
-import Book from '../models/book-models'
+import { Book } from '../../models'
 
-import { IBookController, IBookQuery, IBook } from '../types';
+import { IBookController, IBookQuery, IBook } from '../../types';
 
 
 const bookController = {} as IBookController;
