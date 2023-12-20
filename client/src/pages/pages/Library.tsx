@@ -11,9 +11,9 @@ import {
 	BookTable,
 	Footer,
 	Modal,
+	ModeToggle,
 	Notification,
 } from "../../components";
-import { ModeToggle } from "../../components/components/mode-toggle/ModeToggle";
 
 export const Library = () => {
 	const dispatch = useDispatch<AppDispatch>();
