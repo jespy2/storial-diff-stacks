@@ -1,22 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 
 import { Tooltip } from "../index";
 
 export const ModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(localStorage.getItem('color-theme') === 'dark');
+  const [darkMode, setDarkMode] = useState(false);
   
   const handleToggle = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setDarkMode(!darkMode);
     if (darkMode) {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('color-theme', 'light');
+      localStorage.setItem('storial-darkmode', 'light');
     } else {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('color-theme', 'dark');
+      localStorage.setItem('storial-darkmode', 'dark');
     }
   }
+
+  useEffect(() => {
+    setDarkMode(localStorage.getItem('storial-darkmode') === 'dark')
+  }, [])
 
   return (
     <div className="mode-toggle group">
