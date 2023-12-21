@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import apis from "../../api";
-import { IBook } from "../../types";
+import apis from "../../../api";
+import { IBook } from "../../../types";
 
-const thunks = {
+export const bookThunks = {
   insertBook: createAsyncThunk(
     "book/insertBook",
     async (book: IBook, { rejectWithValue }) => {
@@ -91,5 +91,3 @@ const thunks = {
     }
   )
 }
-
-export default thunks;

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../../../redux/store";
 import { closeModal, openNotification } from "../../../../../redux/slices";
-import thunks from "../../../../../redux/thunks/books";
+import { bookThunks } from "../../../../../redux/thunks";
 import { IBook } from "../../../../../types";
 
 export const AddBook = () => {
@@ -22,7 +22,7 @@ export const AddBook = () => {
 		e.preventDefault();
 		const payload: IBook = { title, author, notes, status: "unread" };
 
-		await dispatch(thunks.insertBook(payload)).then(() => {
+		await dispatch(bookThunks.insertBook(payload)).then(() => {
 			dispatch(
 				openNotification({ message: `${title} has been added to your library` })
 			);

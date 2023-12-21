@@ -9,6 +9,7 @@ const authController = {} as IAuthController;
 
 authController.createUser = async (req, res, next) => { 
   const newUser: IUser = req.body;
+  console.log(newUser)
   const { email } = newUser;
   try {
     const existingUser = await User.findOne({ email });

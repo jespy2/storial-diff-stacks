@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBook, IBookState, SortDirection, SortItem } from "../../../types";
-import thunks from "../../thunks/books";
+import { bookThunks } from "../../thunks";
 
-const { insertBook, getAllBooks, updateBookById, deleteBookById } = thunks;
+const { insertBook, getAllBooks, updateBookById, deleteBookById } = bookThunks;
 
 const initialBookState: IBookState = {
   books: {
@@ -74,6 +74,7 @@ export const bookSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // INSERTBOOK
       .addCase(insertBook.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
@@ -93,8 +94,8 @@ export const bookSlice = createSlice({
       .addCase(insertBook.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
-      });
-    builder
+      })
+      // GETALLBOOKS
       .addCase(getAllBooks.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
@@ -107,8 +108,8 @@ export const bookSlice = createSlice({
       .addCase(getAllBooks.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
-      });
-    builder
+      })    
+      // DELETEBOOKBYID
       .addCase(deleteBookById.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
@@ -122,8 +123,8 @@ export const bookSlice = createSlice({
       .addCase(deleteBookById.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
-      });
-    builder
+      })
+      // UPDATEBOOKBYID
       .addCase(updateBookById.pending, (state) => {
         state.isLoading = true;
         state.isError = false;

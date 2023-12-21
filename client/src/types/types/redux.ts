@@ -1,4 +1,4 @@
-import { IBook, ModalType } from '../index';
+import { IBook, IUser, ModalType } from '../index';
 
 export interface IModalState { 
   isOpen: boolean;
@@ -39,6 +39,16 @@ export interface IBookState {
       sortDirection: SortDirection;
     }
   };
+  isLoading: boolean;
+  isError: boolean;
+}
+
+export interface IAuthState {
+  auth: {
+    isAuthenticated: boolean;
+    isRegistered: boolean;
+    userInfo: IUser;
+    }
   isLoading: boolean;
   isError: boolean;
 }

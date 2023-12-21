@@ -1,8 +1,11 @@
 export { Alert } from './components/alert/Alert';
 export { BookTable } from './components/book-table/BookTable';
 export { Footer } from './components/footer/Footer';
+export { Home } from './components/home/Home';
+export { Login } from './components/login/Login';
 export { Modal } from './components/modal/Modal';
 export { ModeToggle } from './components/mode-toggle/ModeToggle';
 export { Notification } from './components/notification/Notification';
 export { Pill } from './components/pill/Pill';
+export { Signup } from './components/signup/Signup';
 export { Tooltip } from './components/tooltip/Tooltip';

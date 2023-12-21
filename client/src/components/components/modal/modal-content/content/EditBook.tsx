@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../../../redux/store";
 import { closeModal, openNotification } from "../../../../../redux/slices";
 import { useAppSelector } from "../../../../../hooks";
-import thunks from "../../../../../redux/thunks/books";
+import { bookThunks } from "../../../../../redux/thunks";
 import { IBook } from "../../../../../types";
 
 export const EditBook = () => {
@@ -24,7 +24,7 @@ export const EditBook = () => {
 	const titleField = useRef<HTMLInputElement | null>(null);
 	useEffect(() => {
 		(async () => {
-			await dispatch(thunks.getBookById(modalState.id)).then((book) => {
+			await dispatch(bookThunks.getBookById(modalState.id)).then((book) => {
 				set_Id(book.payload.data._id);
 				setTitle(book.payload.data.title);
 				setAuthor(book.payload.data.author);
@@ -43,7 +43,7 @@ export const EditBook = () => {
 		payload.notes = newNotes ? newNotes : notes;
 		payload.status = status;
 
-		await dispatch(thunks.updateBookById(payload)).then(() => {
+		await dispatch(bookThunks.updateBookById(payload)).then(() => {
 			dispatch(
 				openNotification({
 					message: `${newTitle} has been successfully updated`,

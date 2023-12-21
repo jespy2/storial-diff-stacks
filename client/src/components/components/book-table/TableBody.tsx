@@ -5,7 +5,7 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { useAppSelector } from "../../../hooks";
 import { ModalType } from "../../../types";
 import { openAlert, openModal } from "../../../redux/slices";
-import thunks from "../../../redux/thunks/books";
+import { bookThunks } from "../../../redux/thunks";
 import { AppDispatch } from "../../../redux/store";
 import { Pill } from "../../index";
 
@@ -50,7 +50,7 @@ export const TableBody = () => {
 											openAlert({
 												message: "Are you sure you want to delete this book?",
 												onConfirm: () =>
-													dispatch(thunks.deleteBookById(book._id)),
+													dispatch(bookThunks.deleteBookById(book._id)),
 												notificationMessage: `${book.title} has been removed from your library`,
 											})
 										)

@@ -19,7 +19,7 @@ DB.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //     res.send('Hello World!')
 // })
 
-app.use('/', authRouter);
+app.use('/auth', authRouter);
 app.use('/api', bookRouter);
 
 app.listen(apiPort, () => console.log(`🤖 Server running on port ${apiPort} 🚀`));

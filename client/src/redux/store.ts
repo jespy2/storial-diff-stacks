@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {  alertReducer, bookReducer, modalReducer, notificationReducer } from "./slices/";
+import {  alertReducer, authReducer, bookReducer, modalReducer, notificationReducer } from "./slices/";
 
 export const store = configureStore({
   reducer: {
     alert: alertReducer,
+    auth: authReducer,
     books: bookReducer,
     modal: modalReducer,
     notification: notificationReducer,

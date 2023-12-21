@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../redux/store";
 import { openNotification } from "../../../redux/slices";
-import thunks from "../../../redux/thunks/books";
+import { bookThunks } from "../../../redux/thunks";
 import { IBook } from "../../../types";
 
 export const Pill = ({ book }: { book: IBook }) => {
@@ -14,7 +14,7 @@ export const Pill = ({ book }: { book: IBook }) => {
 			...updatedBook,
 			status: book.status === "unread" ? "read" : "unread",
 		};
-		await dispatch(thunks.updateBookById(updatedBook)).then(() =>
+		await dispatch(bookThunks.updateBookById(updatedBook)).then(() =>
 			dispatch(
 				openNotification({
 					message: `Status has been updated for ${book.title}`,

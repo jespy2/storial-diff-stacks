@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "./redux/store";
-import thunks from "./redux/thunks/books";
+import { bookThunks } from "./redux/thunks";
 import { routesConfig } from "./App.routes";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 	const dispatch = useDispatch<AppDispatch>();
 	const state = useSelector((state) => state);
 	const fetchBooks = useCallback(() => {
-		dispatch(thunks.getAllBooks());
+		dispatch(bookThunks.getAllBooks());
 	}, [dispatch]);
 
 	useEffect(() => {
