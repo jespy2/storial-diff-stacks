@@ -1,13 +1,25 @@
+import { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
+import { AppDispatch } from "../../../redux/store";
+import { bookThunks } from "../../../redux/thunks";
 import { openModal } from "../../../redux/slices";
+import { useAppSelector } from "../../../hooks";
 import { ModalType } from "../../../types";
 import { Footer } from "../../";
 
 export const Home = () => { 
+	const { username } = useAppSelector((state) => state.auth.auth.userInfo);
+	const dispatch = useDispatch<AppDispatch>();
+	const fetchBooks = useCallback(() => {
+		dispatch(bookThunks.getAllBooks(username));
+	}, [dispatch]);
 
-	const dispatch = useDispatch();
+	useEffect(() => {
+		fetchBooks();
+	}, [fetchBooks]);
+
   return (
     <>
 					<header>

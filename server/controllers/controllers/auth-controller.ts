@@ -1,4 +1,4 @@
-import { User } from '../../models/';
+import { Book, User } from '../../models/';
 import { createSecretToken } from '../../util/SecretToken';
 import bcrypt from 'bcryptjs';
 
@@ -26,6 +26,7 @@ authController.createUser = async (req, res, next) => {
        return
     }
     const user = await User.create(newUser);
+    const book = await Book.create({ username: newUser.username });
     const token = createSecretToken(user._id.toString());
     res.cookie('token', token, {
       httpOnly: false,

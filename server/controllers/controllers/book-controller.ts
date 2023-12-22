@@ -119,7 +119,7 @@ bookController.getBookById = async (req, res): Promise<void> => {
 
 bookController.getBooks = async (req, res): Promise<void> => {
     try {
-        const booksData: IBook[] = await Book.find({})
+        const booksData: IBook[] = await Book.find({username: req.params.username})
     
         if (!booksData) {
             res.status(400).json({ success: false, error: 'Error: Books not found' });
