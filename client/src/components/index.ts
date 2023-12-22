@@ -1,5 +1,5 @@
 export { Alert } from './components/alert/Alert';
-export { BookTable } from './components/book-table/BookTable';
+export { Table } from './components/table/Table';
 export { Footer } from './components/footer/Footer';
 export { Home } from './components/home/Home';
 export { Login } from './components/login/Login';

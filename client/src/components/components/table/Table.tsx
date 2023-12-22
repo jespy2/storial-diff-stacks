@@ -2,7 +2,7 @@ import { useAppSelector } from "../../../hooks";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
 
-export const BookTable = () => {
+export const Table = () => {
 	const state = useAppSelector((state) => state);
 	const { isLoading } = state.books;
 

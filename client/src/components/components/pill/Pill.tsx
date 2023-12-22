@@ -12,19 +12,22 @@ export const Pill = ({ book }: { book: IBook }) => {
 		let updatedBook = book;
 		updatedBook = {
 			...updatedBook,
-			status: book.status === "unread" ? "read" : "unread",
+			book: {
+				...updatedBook.book,
+				status: book.book.status === "unread" ? "read" : "unread"
+			},
 		};
 		await dispatch(bookThunks.updateBookById(updatedBook)).then(() =>
 			dispatch(
 				openNotification({
-					message: `Status has been updated for ${book.title}`,
+					message: `Status has been updated for ${book.book.title}`,
 				})
 			)
 		);
 	};
 	return (
-		<div className={`pill-${book.status}`} onClick={handleStatusChange}>
-			{book.status}
+		<div className={`pill-${book.book.status}`} onClick={handleStatusChange}>
+			{book.book.status}
 		</div>
 	);
 };

@@ -8,7 +8,7 @@ import { ModalType } from "../../types";
 import { useAppSelector } from "../../hooks";
 import {
 	Alert,
-	BookTable,
+	Table,
 	Footer,
 	Modal,
 	ModeToggle,
@@ -50,7 +50,7 @@ export const Library = () => {
 						<h1 className='page-header-title'>Your Library</h1>
 					</main>
 					{isLoading && <div>Loading...</div>}
-					{!isLoading && <BookTable />}
+					{!isLoading && <Table />}
 
 					<section className='page-navbar px-4 '>
 						<Link to='/'>

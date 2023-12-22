@@ -18,15 +18,15 @@ export const TableBody = () => {
 			{bookState &&
 				bookState.map((book) => (
 					<tbody className='border-separate space-y-6 p-5 mt-10'>
-						<tr className='p-3 text-sm' key={book._id as Key}>
+						<tr className='p-3 text-sm' key={book.book._id as Key}>
 							<td className='border-r p-3'>
 								<div className='pill'>
 									<Pill book={book} />
 								</div>
 							</td>
-							<td className='border-r p-3'>{book.title}</td>
-							<td className='border-r p-3'>{book.author}</td>
-							<td className='p-3'>{book.notes}</td>
+							<td className='border-r p-3'>{book.book.title}</td>
+							<td className='border-r p-3'>{book.book.author}</td>
+							<td className='p-3'>{book.book.notes}</td>
 							<td>
 								<PencilIcon
 									className='link-icon'
@@ -35,7 +35,7 @@ export const TableBody = () => {
 										dispatch(
 											openModal({
 												type: ModalType.EDIT_BOOK,
-												id: book._id as string,
+												id: book.book._id as string,
 											})
 										)
 									}
@@ -50,8 +50,8 @@ export const TableBody = () => {
 											openAlert({
 												message: "Are you sure you want to delete this book?",
 												onConfirm: () =>
-													dispatch(bookThunks.deleteBookById(book._id)),
-												notificationMessage: `${book.title} has been removed from your library`,
+													dispatch(bookThunks.deleteBookById(book.book._id)),
+												notificationMessage: `${book.book.title} has been removed from your library`,
 											})
 										)
 									}

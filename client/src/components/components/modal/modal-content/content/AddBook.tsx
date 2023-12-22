@@ -5,12 +5,16 @@ import { AppDispatch } from "../../../../../redux/store";
 import { closeModal, openNotification } from "../../../../../redux/slices";
 import { bookThunks } from "../../../../../redux/thunks";
 import { IBook } from "../../../../../types";
+import { useAppSelector } from "../../../../../hooks";
 
 export const AddBook = () => {
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [notes, setNotes] = useState("");
 	const dispatch = useDispatch<AppDispatch>();
+	
+	const state = useAppSelector((state) => state);
+	const { username } = state.auth.auth.userInfo;
 
 	//upon render, apply focus to title field
 	const titleField = useRef<HTMLInputElement | null>(null);
@@ -20,7 +24,10 @@ export const AddBook = () => {
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		const payload: IBook = { title, author, notes, status: "unread" };
+		const payload: IBook = {
+			username: username,
+			book: { title, author, notes, status: "unread" },
+		};
 
 		await dispatch(bookThunks.insertBook(payload)).then(() => {
 			dispatch(

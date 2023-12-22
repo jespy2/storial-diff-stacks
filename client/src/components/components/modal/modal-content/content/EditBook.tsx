@@ -9,8 +9,9 @@ import { IBook } from "../../../../../types";
 
 export const EditBook = () => {
 	const dispatch = useDispatch<AppDispatch>();
-	const modalState = useAppSelector((state) => state.modal);
-
+	const state = useAppSelector((state) => state);
+	const modalState = state.modal;
+	const { username } = state.auth.auth.userInfo;
 	const [_id, set_Id] = useState<string>("");
 	const [title, setTitle] = useState<string>("");
 	const [author, setAuthor] = useState<string>("");
@@ -37,11 +38,15 @@ export const EditBook = () => {
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		const payload: IBook = { _id, title, author, notes, status };
-		payload.title = newTitle ? newTitle : title;
-		payload.author = newAuthor ? newAuthor : author;
-		payload.notes = newNotes ? newNotes : notes;
-		payload.status = status;
+		const payload: IBook = {
+			username: username,
+			book: {
+				title: newTitle ? newTitle : title,
+				author: newAuthor ? newAuthor : author,
+				notes: newNotes ? newNotes : notes,
+				status: status
+			},
+		};
 
 		await dispatch(bookThunks.updateBookById(payload)).then(() => {
 			dispatch(

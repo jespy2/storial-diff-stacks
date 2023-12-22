@@ -47,19 +47,19 @@ authController.createUser = async (req, res, next) => {
 
 authController.loginUser = async (req, res, next) => { 
   try {
-    const { email, password } = req.body;
-    if(!email || !password) {
-      res.status(400).json({ message: 'Please provide email and password' });
+    const { username, password } = req.body;
+    if(!username || !password) {
+      res.status(400).json({ message: 'Please provide username and password' });
       return;
     }
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ username });
     if (!user) {
-      res.status(400).json({ message: 'Invalid password or email' });
+      res.status(400).json({ message: 'Invalid password or username' });
       return;
     }
     const auth = await bcrypt.compare(password, user.password);
     if(!auth) {
-      res.status(400).json({ message: 'Invalid password or email' });
+      res.status(400).json({ message: 'Invalid password or username' });
       return;
     }
     const token = createSecretToken(user._id.toString());

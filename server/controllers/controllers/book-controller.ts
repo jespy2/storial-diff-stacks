@@ -55,17 +55,17 @@ bookController.updateBook = async (req, res): Promise<void> => {
     
     try {
         const book = await Book.findOne({ _id: req.params.id });
-            if (!book) {
+            if (!book || !book.book) {
                 res.status(404).json({
                     message: 'Book not found!',
                 });
                 return;
             }
-            
-        book.title = body.title
-        book.author = body.author
-        book.notes = body.notes
-        book.status = body.status
+        book.username = body.username    
+        book.book.title = body.book.title
+        book.book.author = body.book.author
+        book.book.notes = body.book.notes
+        book.book.status = body.book.status
             await book.save();
             
             res.status(200).json({
