@@ -70,7 +70,7 @@ export const Login = () => {
 					/>
 				</label>
 				<button className='submit-btn' type='submit'>
-					Sign Up
+					Login
 				</button>
 			</form>
 			<h3
@@ -78,6 +78,13 @@ export const Login = () => {
 				onClick={handleNotRegistered}
 			>
 				I'm new, get me registered!
+			</h3>
+
+			<h3
+				className='text-gray-400 text-sm font-bold mb-2 cursor-pointer'
+				onClick={()=> alert('send me a reset link')}
+			>
+				Uh...I forgot my password!
 			</h3>
 		</div>
 	);

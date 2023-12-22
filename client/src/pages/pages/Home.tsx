@@ -12,6 +12,7 @@ export const Home = () => {
 	const { isAuthenticated, isRegistered } = state.auth.auth;
 	return (
 		<div className='home-container'>
+			<h2>Logout</h2>
 			<ModeToggle />
 			{!isAuthenticated && !isRegistered && <Signup />}
 			{!isAuthenticated && isRegistered && <Login />}

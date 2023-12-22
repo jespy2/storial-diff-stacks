@@ -39,6 +39,7 @@ export const Library = () => {
 		<div className='home-container'>
 			{isAuthenticated &&
 				<>
+				<h2>Logout</h2>
 					<ModeToggle />
 					<main className='page-header-container'>
 						<img
