@@ -29,7 +29,12 @@ export const Signup = () => {
 
   const { email, password, username } = userInput;
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col items-center'>
+      <img
+					src='/storial-logo.png'
+					alt='Storial Logo'
+					className='header-logo'
+				/>
       <h2 className='text-3xl font-bold text-gray-400 mb-20' >New User Registration</h2>
       <form  onSubmit={handleSubmit}>
         <label className='block text-gray-400 text-sm font-bold mb-2' htmlFor='email'>

@@ -1,7 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
 
 export const NotFound = () => {
+  const navigate = useNavigate();
+  const state = useAppSelector((state) => state);
+  const { isAuthenticated } = state.auth.auth;
+
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/');
+    };
+  }, []);
+
   return (
     <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
       <img src="/storial-logo.png" alt="Storial Logo" className="header-logo" />

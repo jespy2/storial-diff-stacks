@@ -101,6 +101,7 @@ export const bookSlice = createSlice({
         state.isError = false;
       })
       .addCase(getAllBooks.fulfilled, (state, action) => {
+        console.log(action.payload.data)
         state.isLoading = false;
         state.isError = false;
         state.books.data = action.payload.data;
