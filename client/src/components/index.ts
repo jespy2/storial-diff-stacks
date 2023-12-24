@@ -3,6 +3,7 @@ export { Table } from './components/table/Table';
 export { Footer } from './components/footer/Footer';
 export { Home } from './components/home/Home';
 export { Login } from './components/login/Login';
+export { Logout } from './components/logout/Logout';
 export { Modal } from './components/modal/Modal';
 export { ModeToggle } from './components/mode-toggle/ModeToggle';
 export { Notification } from './components/notification/Notification';

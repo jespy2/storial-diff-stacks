@@ -13,6 +13,7 @@ import {
 	Modal,
 	ModeToggle,
 	Notification,
+	Logout,
 } from "../../components";
 
 export const Library = () => {
@@ -43,7 +44,7 @@ export const Library = () => {
 		<div className='home-container'>
 			{isAuthenticated &&
 				<>
-				<h2>Logout</h2>
+					<Logout />
 					<ModeToggle />
 					<main className='page-header-container'>
 						<img

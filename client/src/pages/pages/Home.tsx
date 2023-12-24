@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
 	Home as HomeContent,
 	Login,
+	Logout,
 	ModeToggle,
 	Signup,
 } from "../../components";
@@ -12,11 +13,16 @@ export const Home = () => {
 	const { isAuthenticated, isRegistered } = authState;
 	return (
 		<div className='home-container'>
-			<h2>Logout</h2>
+			
 			<ModeToggle />
 			{!isAuthenticated && !isRegistered && <Signup />}
 			{!isAuthenticated && isRegistered && <Login />}
-			{isAuthenticated && <HomeContent />}
+			{isAuthenticated &&
+				<>
+					<Logout />
+					<HomeContent />
+				</>
+			}
 		</div>
 	);
 };

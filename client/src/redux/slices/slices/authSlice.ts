@@ -39,6 +39,18 @@ export const authSlice = createSlice({
         isError: false,
       }
     },
+    logoutUser: (state) => {
+      console.log('logoutUser')
+      state.auth.isAuthenticated = false;
+      state.auth.isRegistered = true;
+      state.auth.userInfo = {
+        email: '',
+        password: '',
+        username: ''
+      };
+      state.isLoading = false;
+      state.isError = false;
+    },
     createUser: (state, action) => {
       state = {
         auth:
@@ -64,31 +76,31 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => { 
     builder
-      // LOGINUSER
-      .addCase(loginUser.pending, (state, action) => {
-        state.isLoading = true;
-        state.isError = false;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isError = false;
-        state.auth =
-          {
-            isAuthenticated: action.payload?.response.data.success,
-            isRegistered: action.payload?.response.data.success,
-            userInfo: {
-              email: action.payload ? action.payload?.user.email : '',
-              password: action.payload ? action.payload?.user.password : '',
-              username: action.payload ? action.payload?.user.username : ''
-            }
+    // LOGINUSER
+    .addCase(loginUser.pending, (state, action) => {
+      state.isLoading = true;
+      state.isError = false;
+    })
+    .addCase(loginUser.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.auth =
+        {
+          isAuthenticated: action.payload?.response.data.success,
+          isRegistered: action.payload?.response.data.success,
+          userInfo: {
+            email: action.payload ? action.payload?.user.email : '',
+            password: action.payload ? action.payload?.user.password : '',
+            username: action.payload ? action.payload?.user.username : ''
           }
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.auth.isAuthenticated = false;
-        state.auth.isRegistered = false;
-      })
+        }
+    })
+    .addCase(loginUser.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.auth.isAuthenticated = false;
+      state.auth.isRegistered = false;
+    })
       // REGISTERUSER
       .addCase(createUser.pending, (state, action) => {
         state.isLoading = true;
@@ -118,7 +130,7 @@ export const authSlice = createSlice({
 });
 
 export const { reducer: authReducer, actions: authActions } = authSlice;
-export const { userIsRegistered, userNotRegistered } = authActions;
+export const { userIsRegistered, userNotRegistered, logoutUser } = authActions;
 
 
     // logoutUser: (state, action) => {

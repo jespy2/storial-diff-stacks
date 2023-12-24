@@ -184,7 +184,7 @@
   text-center text-blue-300 font-bold text-sm
 }
 .mode-toggle {
-  @apply absolute top-5 right-8
+  @apply absolute top-5 right-16
 }
 .toggle-dark-icon {
   @apply h-8 w-8 text-blue-500 hover:text-gray-400
@@ -206,6 +206,11 @@
 }
 
 .password-icon {
-  @apply absolute right-1 top-1
+  @apply absolute right-1 top-1 cursor-pointer
   h-5 w-5 text-blue-500 hover:text-gray-400
+}
+
+.logout-icon {
+  @apply absolute top-5 right-8 cursor-pointer
+  h-8 w-8 text-blue-500 hover:text-gray-400
 }
