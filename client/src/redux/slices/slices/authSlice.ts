@@ -40,7 +40,6 @@ export const authSlice = createSlice({
       }
     },
     logoutUser: (state) => {
-      console.log('logoutUser')
       state.auth.isAuthenticated = false;
       state.auth.isRegistered = true;
       state.auth.userInfo = {
