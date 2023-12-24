@@ -3,8 +3,8 @@ import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
 
 export const Table = () => {
-	const state = useAppSelector((state) => state);
-	const { isLoading } = state.books;
+	const booksState = useAppSelector((state) => state.books);
+	const { isLoading } = booksState;
 
 	return (
 		<div className='flex-grow overflow-auto h-80 w-3/4 rounded-md shadow-lg dark:border dark:border-slate-300 dark:shadow-md dark:shadow-slate-500'>

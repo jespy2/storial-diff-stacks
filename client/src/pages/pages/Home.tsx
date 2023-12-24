@@ -8,8 +8,8 @@ import {
 import { useAppSelector } from "../../hooks";
 
 export const Home = () => {
-	const state = useAppSelector((state) => state);
-	const { isAuthenticated, isRegistered } = state.auth.auth;
+	const authState = useAppSelector((state) => state.auth.auth);
+	const { isAuthenticated, isRegistered } = authState;
 	return (
 		<div className='home-container'>
 			<h2>Logout</h2>

@@ -9,9 +9,9 @@ import { IBook } from "../../../../../types";
 
 export const EditBook = () => {
 	const dispatch = useDispatch<AppDispatch>();
-	const state = useAppSelector((state) => state);
-	const modalState = state.modal;
-	const { username } = state.auth.auth.userInfo;
+	const modalState = useAppSelector((state) => state.modal);
+	const authState = useAppSelector((state) => state.auth.auth);
+	const { username } = authState.userInfo;
 	const [_id, set_Id] = useState<string>("");
 	const [title, setTitle] = useState<string>("");
 	const [author, setAuthor] = useState<string>("");

@@ -4,8 +4,8 @@ import { useAppSelector } from "../../../hooks";
 import { ModalHeader } from "./modal-content/components/ModalHeader";
 
 export const Modal = () => {
-	const state = useAppSelector((state) => state);
-	const { modalContentType } = state.modal;
+	const modalState = useAppSelector((state) => state.modal);
+	const { modalContentType } = modalState;
 	let _modalContent;
 	if (modalContentType === "NONE") {
 		_modalContent = {

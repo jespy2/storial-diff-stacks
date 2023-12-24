@@ -17,17 +17,21 @@ import {
 
 export const Library = () => {
 	const dispatch = useDispatch<AppDispatch>();
-	const state = useAppSelector((state) => state);
 	const navigate = useNavigate();
-	const { isAuthenticated } = state.auth.auth;
-	const { books: booksState, isLoading } = state.books;
-	const { isOpen: isModalOpen } = state.modal;
-	const { isOpen: isAlertOpen } = state.alert;
-	const { isOpen: isNotificationOpen } = state.notification;
+	const authState = useAppSelector((state) => state.auth.auth);
+	const booksState = useAppSelector((state) => state.books);
+	const modalState = useAppSelector((state) => state.modal);
+	const alertState = useAppSelector((state) => state.alert);
+	const notificationState = useAppSelector((state) => state.notification);
+	const { isAuthenticated } = authState;
+	const { isLoading } = booksState;
+	const { isOpen: isModalOpen } = modalState;
+	const { isOpen: isAlertOpen } = alertState;
+	const { isOpen: isNotificationOpen } = notificationState;
 
 	useEffect(() => {
 		closeModal();
-	}, [booksState.data]);
+	}, [booksState.books.data]);
 
 	useEffect(() => { 
 		if (!isAuthenticated) {

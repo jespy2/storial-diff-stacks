@@ -13,8 +13,8 @@ export const AddBook = () => {
 	const [notes, setNotes] = useState("");
 	const dispatch = useDispatch<AppDispatch>();
 	
-	const state = useAppSelector((state) => state);
-	const { username } = state.auth.auth.userInfo;
+	const authState = useAppSelector((state) => state.auth.auth);
+	const { username } = authState.userInfo;
 
 	//upon render, apply focus to title field
 	const titleField = useRef<HTMLInputElement | null>(null);

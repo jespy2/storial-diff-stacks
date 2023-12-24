@@ -8,8 +8,7 @@ import { closeNotification } from "../../../redux/slices";
 
 export const Notification = () => {
 	const dispatch = useDispatch<AppDispatch>();
-	const state = useAppSelector((state) => state);
-	const { notification } = state;
+	const notificationState = useAppSelector((state) => state.notification);
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -21,7 +20,7 @@ export const Notification = () => {
 		<div className='notification'>
 			<body>
 				<ExclamationCircleIcon className='notification-icon' />
-				<p>{notification.message}</p>
+				<p>{notificationState.message}</p>
 				<XMarkIcon
 					className='notification-close-icon'
 					onClick={() => dispatch(closeNotification())}

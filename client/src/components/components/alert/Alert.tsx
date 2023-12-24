@@ -7,29 +7,28 @@ import { closeAlert, openNotification } from "../../../redux/slices";
 
 export const Alert = () => {
 	const dispatch = useDispatch<AppDispatch>();
-	const state = useAppSelector((state) => state);
-	const { alert } = state;
+	const alertState = useAppSelector((state) => state.alert);
 
 	const onConfirm = () => {
-		alert.onConfirm();
+		alertState.onConfirm();
 		dispatch(closeAlert());
-		dispatch(openNotification({ message: alert.notificationMessage }));
+		dispatch(openNotification({ message: alertState.notificationMessage }));
 	};
 	return (
-		<div className='alert-screen-background'>
-			<div className='alert'>
+		<div className='alertState-screen-background'>
+			<div className='alertState'>
 				<body>
-					<ExclamationCircleIcon className='alert-icon' />
-					<h3>{alert.message}</h3>
+					<ExclamationCircleIcon className='alertState-icon' />
+					<h3>{alertState.message}</h3>
 				</body>
 				<footer>
 					<button
-						className='alert-cancel-btn'
+						className='alertState-cancel-btn'
 						onClick={() => dispatch(closeAlert())}
 					>
 						Cancel
 					</button>
-					<button className='alert-confirm-btn' onClick={onConfirm}>
+					<button className='alertState-confirm-btn' onClick={onConfirm}>
 						Confirm
 					</button>
 				</footer>

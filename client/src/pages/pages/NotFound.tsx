@@ -4,8 +4,8 @@ import { useAppSelector } from '../../hooks';
 
 export const NotFound = () => {
   const navigate = useNavigate();
-  const state = useAppSelector((state) => state);
-  const { isAuthenticated } = state.auth.auth;
+  const authState = useAppSelector((state) => state.auth.auth);
+  const { isAuthenticated } = authState;
 
   React.useEffect(() => {
     if (!isAuthenticated) {
