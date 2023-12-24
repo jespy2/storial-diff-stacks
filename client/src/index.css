@@ -204,3 +204,8 @@
   @apply absolute top-1/2 left-full -mt-2 
   border-8 border-transparent border-t-transparent border-r-transparent border-b-transparent border-l-slate-400
 }
+
+.password-icon {
+  @apply absolute right-1 top-1
+  h-5 w-5 text-blue-500 hover:text-gray-400
+}

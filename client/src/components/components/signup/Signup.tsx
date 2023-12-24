@@ -1,5 +1,6 @@
-import { Dispatch, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
 import { AppDispatch } from '../../../redux/store';
 import { userIsRegistered } from '../../../redux/slices';
@@ -7,6 +8,7 @@ import { authThunks } from '../../../redux/thunks';
 import { IUser } from '../../../types';
 
 export const Signup = () => { 
+	const [showPassword, setShowPassword] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<IUser>({
     email: '',
     password: '',
@@ -58,15 +60,21 @@ export const Signup = () => {
           />
         </label>
         <label className='block text-gray-400 text-sm font-bold mb-2' htmlFor='password'>
-          <input
-            type='password'
-            name='password'
-            id='password'
-            className='textfield focus:outline-none focus:shadow-outline'
-            value={password}
-            placeholder='Password'
-            onChange={(e) => setUserInput({ ...userInput, password: e.target.value })}
-          />
+        <div className="relative" >
+					<EyeIcon className={`password-icon ${showPassword ? 'block' : 'hidden'}`} onClick={() => setShowPassword(!showPassword )}/>
+					<EyeSlashIcon className={`password-icon ${!showPassword ? 'block' : 'hidden'}`} onClick={() => setShowPassword(!showPassword )}/>
+					<input
+						type={showPassword ? 'text' : 'password'}
+						name='password'
+						id='password'
+						className='textfield focus:outline-none focus:shadow-outline'
+						value={password}
+						placeholder='Password'
+						onChange={(e) =>
+							setUserInput({ ...userInput, password: e.target.value })
+						}
+						/>
+					</div>
         </label>
         <button className='submit-btn' type="submit">Sign Up</button>
       </form>
