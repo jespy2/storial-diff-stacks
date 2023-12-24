@@ -6,14 +6,12 @@ export const authThunks = {
   createUser: createAsyncThunk(
     "auth/createUser",
     async (user: IUser, { rejectWithValue }) => {
-      console.log(user)
       try {
         const response = await apis.createUser(user);
         const data = {
           response: response,
           user: user,
         }
-        console.log(data)
         return data;
       } catch (err) {
         if (err instanceof Error) {

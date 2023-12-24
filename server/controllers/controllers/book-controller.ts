@@ -120,14 +120,23 @@ bookController.getBookById = async (req, res): Promise<void> => {
 bookController.getBooks = async (req, res): Promise<void> => {
     try {
         const booksData: IBook[] = await Book.find({username: req.params.username})
-    
         if (!booksData) {
-            res.status(400).json({ success: false, error: 'Error: Books not found' });
-            return;
-        }
-        if (!booksData.length) {
-            res.status(404).json({ success: false, error: `Book not found` });
-            return;
+            const initData = {
+                username: req.params.username,
+                book: {
+                    title: '',
+                    author: '',
+                    notes: '',
+                    status: 'unread'
+                }
+            }
+            const seed = new Book(initData)
+            
+            await seed
+                .save()
+                .then(() => {
+                    return res.status(200).json({ success: true, data: seed, message: 'Seeded!' })
+                })
         }
         res.status(200).json({ success: true, data: booksData })
         return;

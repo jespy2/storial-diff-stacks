@@ -36,7 +36,16 @@ export const bookSlice = createSlice({
       }
     },
     getAllBooks: (state, action) => {
-      state.books.data = action.payload;
+      const isNewUser = action.payload?.data?.success === false;
+      const userLibrary = isNewUser
+        ? [
+          {
+            username: action.payload?.data?.username,
+            book: { title: '', author: '', notes: '', status: 'unread' }
+          } as IBook
+        ]
+        : state.books.data.filter((book) => book.username === action.payload.username);
+      state.books.data = userLibrary;
       state.isLoading = false;
       state.isError = false;
     },
@@ -101,7 +110,6 @@ export const bookSlice = createSlice({
         state.isError = false;
       })
       .addCase(getAllBooks.fulfilled, (state, action) => {
-        console.log(action.payload.data)
         state.isLoading = false;
         state.isError = false;
         state.books.data = action.payload.data;

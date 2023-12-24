@@ -24,7 +24,6 @@ export const authSlice = createSlice({
   initialState: initialAuthState,
   reducers: {
     loginUser: (state, action) => {
-      console.log(action.payload?.user)
       state = {
         auth:
         {
@@ -41,7 +40,6 @@ export const authSlice = createSlice({
       }
     },
     createUser: (state, action) => {
-      console.log(action.payload?.user)
       state = {
         auth:
         {
@@ -97,7 +95,6 @@ export const authSlice = createSlice({
         state.isError = false;
       })
       .addCase(createUser.fulfilled, (state, action) => {
-        console.log(action.payload?.user)
         state.isLoading = false;
         state.isError = false;
         state.auth =

@@ -18,9 +18,7 @@ export const Login = () => {
 		e.preventDefault();
 		const payload: IUser = userInput;
 
-		await dispatch(authThunks.loginUser(payload)).then(() => {
-			console.log("payload", payload);
-		});
+		await dispatch(authThunks.loginUser(payload));
 	};
 
 	const handleNotRegistered = async (e: { preventDefault: () => void }) => {

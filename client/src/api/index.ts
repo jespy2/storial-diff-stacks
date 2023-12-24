@@ -10,7 +10,7 @@ const auth_api = axios.create({
 })
 
 export const insertBook = (payload: IBook) => book_api.post(`/book`, payload);
-export const getAllBooks = (username: string) => book_api.get(`/books`);
+export const getAllBooks = (username: string) => book_api.get(`/books/${username}`);
 export const updateBookById = (id: string, payload: IBook) => book_api.put(`/book/${id}`, payload);
 export const deleteBookById = (id: string) => book_api.delete(`/book/${id}`);
 export const getBookById = (id: string) => book_api.get(`/book/${id}`);
