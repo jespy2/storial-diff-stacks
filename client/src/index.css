@@ -200,6 +200,15 @@
   bg-slate-400 p-2 rounded-md shadow-lg
   text-center 
 }
+
+.tooltip-mode-toggle {
+  @apply right-12 top-0
+}
+
+.tooltip-logout {
+  @apply right-20 top-5
+}
+
 .tooltip::after {
   @apply absolute top-1/2 left-full -mt-2 
   border-8 border-transparent border-t-transparent border-r-transparent border-b-transparent border-l-slate-400

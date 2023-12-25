@@ -1,7 +1,7 @@
-export const Tooltip = ({ message }: {message: string}) => { 
+export const Tooltip = ({ message, parent }: {message: string, parent: string}) => { 
   return (
     <>
-      <div className="tooltip after:content-['']">{ message }</div>
+      <div className={` tooltip tooltip-${parent} after:content-['']`}>{ message }</div>
     </>
   )
 };
