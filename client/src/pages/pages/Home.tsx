@@ -17,7 +17,7 @@ export const Home = () => {
 			<ModeToggle />
 			{!isAuthenticated && !isRegistered && <Signup />}
 			{!isAuthenticated && isRegistered && <Login />}
-			{isAuthenticated &&
+			{isAuthenticated && isRegistered &&
 				<>
 					<Logout />
 					<HomeContent />
