@@ -50,11 +50,11 @@ export const bookSlice = createSlice({
       state.isError = false;
     },
     deleteBookById: (state, action) => {      
-      const newBookData = state.books.data.filter((book) => book.book._id !== action.payload?.book);
+      const newBookData = state.books.data.filter((book) => book._id !== action.payload?.book);
       state.books.data = newBookData;
     },
     updateBookById: (state, action) => {
-      const index = state.books.data.findIndex((book) => book.book._id === action.payload._id);
+      const index = state.books.data.findIndex((book) => book._id === action.payload._id);
       state.books.data[index] = action.payload.book;
     },
     sortBooks: (state, action: PayloadAction<{sortBy: SortItem }>) => { 
@@ -77,7 +77,7 @@ export const bookSlice = createSlice({
       state.books.data = sortedBooks;
     },
     toggleBookStatus: (state, action: PayloadAction<{ id: string }>) => {
-      const index = state.books.data.findIndex((book) => book.book._id === action.payload.id);
+      const index = state.books.data.findIndex((book) => book._id === action.payload.id);
       state.books.data[index].book.status = state.books.data[index].book.status === 'read' ? 'unread' : 'read';
     }
   },
@@ -124,7 +124,7 @@ export const bookSlice = createSlice({
         state.isError = false;
       })
       .addCase(deleteBookById.fulfilled, (state, action) => {
-        const newBookData = state.books.data.filter((book) => book.book._id !== action.payload?.book);
+        const newBookData = state.books.data.filter((book) => book._id !== action.payload?.book);
         state.isLoading = false;
         state.isError = false;
         state.books.data = newBookData;
@@ -139,7 +139,7 @@ export const bookSlice = createSlice({
         state.isError = false;
       })
       .addCase(updateBookById.fulfilled, (state, action) => {
-        const index = state.books.data.findIndex((book) => book.book._id === action.payload?.book.book._id);
+        const index = state.books.data.findIndex((book) => book._id === action.payload?.book._id);
         state.isLoading = false;
         state.isError = false;
         state.books.data[index] = action.payload?.book;

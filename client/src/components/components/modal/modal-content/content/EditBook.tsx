@@ -26,7 +26,7 @@ export const EditBook = () => {
 	useEffect(() => {
 		(async () => {
 			await dispatch(bookThunks.getBookById(modalState.id)).then((book) => {
-				set_Id(book.payload.data._id);
+				set_Id(book.payload._id);
 				setTitle(book.payload.data.title);
 				setAuthor(book.payload.data.author);
 				setNotes(book.payload.data.notes);
