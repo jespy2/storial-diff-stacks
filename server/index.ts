@@ -15,10 +15,6 @@ app.use(cookieParser());
 
 DB.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-// app.get('/', (req: Request, res: Response) => {
-//     res.send('Hello World!')
-// })
-
 app.use('/auth', authRouter);
 app.use('/api', bookRouter);
 

@@ -14,6 +14,7 @@ export const Login = () => {
 		password: "",
 		username: "",
 	});
+	const [keepLoggedIn, setKeepLoggedIn] = useState<boolean>(false);
 	const dispatch = useDispatch<AppDispatch>();
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -21,6 +22,7 @@ export const Login = () => {
 		const payload: IUser = userInput;
 
 		await dispatch(authThunks.loginUser(payload));
+		keepLoggedIn && localStorage.setItem("keepLoggedIn", "true");
 	};
 
 	const handleNotRegistered = async (e: { preventDefault: () => void }) => {
@@ -53,6 +55,7 @@ export const Login = () => {
 						}
 					/>
 				</label>
+
 				<label
 					className='block text-gray-400 text-sm font-bold mb-2'
 					htmlFor='password'
@@ -73,6 +76,20 @@ export const Login = () => {
 						/>
 					</div>
 				</label>
+				
+				<div>
+					<label htmlFor='keep-logged-in'>
+						<input
+							name='keep-logged-in'
+							type='checkbox'
+							className="mr-2"
+							checked={keepLoggedIn}
+							onChange={() => setKeepLoggedIn(!keepLoggedIn)}
+						/>
+						Keep me logged in
+					</label>
+				</div>
+
 				<button className='submit-btn' type='submit'>
 					Login
 				</button>

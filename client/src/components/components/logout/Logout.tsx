@@ -12,6 +12,7 @@ export const Logout = () => {
 
   const onLogout = () => {
     dispatch(logoutUser());
+    localStorage.setItem("keepLoggedIn", "false");
     navigate('/');
    };
 

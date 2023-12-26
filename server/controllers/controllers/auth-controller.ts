@@ -27,8 +27,7 @@ authController.createUser = async (req, res, next) => {
     const user = await User.create(newUser);
     const token = createSecretToken(user._id.toString());
     res.cookie('token', token, {
-      httpOnly: false,
-      sameSite: 'none',
+      httpOnly: true,
       secure: true
     });
     res.status(201)
@@ -63,8 +62,7 @@ authController.loginUser = async (req, res, next) => {
     }
     const token = createSecretToken(user._id.toString());
     res.cookie('token', token, {
-      httpOnly: false,
-      sameSite: 'none',
+      httpOnly: true,
       secure: true
     });
     res.status(200).json({ message: 'User logged in!', success: true, user });
