@@ -15,16 +15,15 @@ export const ModeToggle = () => {
 		setDarkMode(darkMode === "dark" ? "light" : "dark");
 	};
 
-	useEffect(() => {
-		localStorage.setItem('color-theme', darkMode ? 'dark' : 'light');
-		if (darkMode === "dark") {
-			document.documentElement.classList.remove("dark");
-			document.documentElement.classList.add("light");
-			localStorage.setItem("color-theme", "light");
-		} else {
-			document.documentElement.classList.remove("light");
-			document.documentElement.classList.add("dark");
-			localStorage.setItem("color-theme", "dark");
+	useEffect(() => {		
+		const themeToggler = {
+			dark: 'light',
+			light: 'dark'
+		}
+		if (darkMode) {
+			localStorage.setItem('color-theme', darkMode as string);
+			document.documentElement.classList.remove(themeToggler[darkMode as keyof typeof themeToggler]);
+			document.documentElement.classList.add(darkMode);
 		}
 	}, [darkMode]);
 
