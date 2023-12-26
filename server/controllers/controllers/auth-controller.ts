@@ -1,8 +1,8 @@
-import { Book, User } from '../../models/';
+import { User } from '../../models/';
 import { createSecretToken } from '../../util/SecretToken';
 import bcrypt from 'bcryptjs';
 
-import { IAuthController, IUser, IUserQuery } from '../../types';
+import { IAuthController, IUser } from '../../types';
 
 
 const authController = {} as IAuthController;
@@ -25,7 +25,6 @@ authController.createUser = async (req, res, next) => {
        return
     }
     const user = await User.create(newUser);
-    const book = await Book.create({ username: newUser.username });
     const token = createSecretToken(user._id.toString());
     res.cookie('token', token, {
       httpOnly: false,
@@ -37,8 +36,8 @@ authController.createUser = async (req, res, next) => {
         success: true,
         message: 'User created!',
         user
-      });
-    next();
+      })
+    return;
   } catch (error) {
     res.status(500).json({ error, message: 'User not created' });
     next(error);
