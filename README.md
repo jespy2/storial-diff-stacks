@@ -29,19 +29,20 @@ Since this was a takehome assessment, I had only a few days to go from design to
 ## 2.0 MVP
 For 2.0, I refactored the app with new features, cleaner/DRYer code, improved performance and accessibility, code safety through Typescript and testing.  MVP is almost complete.
   - Refactored to include Typescript and testing via React Testing Library.
+  - Added authorization/profile layer.
   - Updated React Router syntax for v6+
   - Audited and refactored to improve accessibility and performance.
   - Sorting books by field
-  - Add proper modals with branded styling instead of using alerts
+  - Added modals with branded styling instead of using alerts
   - Added pills to display read/unread status that also act as toggle buttons for said status
   - Dark mode
 
 ## Stretch Features
 
 In the future, I'd like to add the following:
+  - Filtering and search
   - Additional fields such as date entered and genre
   - Genre field that has preset options, but editable by user
-  - Add authorization/profile layer.
   - Hosted DB with app running live.
 
 ## Design Notes
