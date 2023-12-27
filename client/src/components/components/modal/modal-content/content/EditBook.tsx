@@ -12,6 +12,7 @@ export const EditBook = () => {
 	const modalState = useAppSelector((state) => state.modal);
 	const authState = useAppSelector((state) => state.auth.auth);
 	const { username } = authState.userInfo;
+
 	const [_id, set_Id] = useState<string>("");
 	const [title, setTitle] = useState<string>("");
 	const [author, setAuthor] = useState<string>("");
@@ -26,11 +27,11 @@ export const EditBook = () => {
 	useEffect(() => {
 		(async () => {
 			await dispatch(bookThunks.getBookById(modalState.id)).then((book) => {
-				set_Id(book.payload._id);
-				setTitle(book.payload.data.title);
-				setAuthor(book.payload.data.author);
-				setNotes(book.payload.data.notes);
-				setStatus(book.payload.data.status);
+				set_Id(book.payload.data._id);
+				setTitle(book.payload.data.book.title);
+				setAuthor(book.payload.data.book.author);
+				setNotes(book.payload.data.book.notes);
+				setStatus(book.payload.data.book.status);
 				titleField.current && titleField.current.focus();
 			});
 		})();
@@ -40,6 +41,7 @@ export const EditBook = () => {
 		e.preventDefault();
 		const payload: IBook = {
 			username: username,
+			_id: _id,
 			book: {
 				title: newTitle ? newTitle : title,
 				author: newAuthor ? newAuthor : author,
