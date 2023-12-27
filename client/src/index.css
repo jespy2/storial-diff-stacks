@@ -119,7 +119,7 @@
   dark:bg-gray-800
 }
 
-.alert body, footer {
+.alert-body, footer {
   @apply flex flex-row w-full
 }
 
@@ -128,7 +128,7 @@
   text-red-500
 }
 
-.alert body > h3 {
+.alert-body > h3 {
   @apply pb-5 ml-3
   text-2xl font-bold text-gray-400 text-center
 }
@@ -152,7 +152,7 @@
   bg-blue-500 rounded-md shadow-lg
 }
 
-.notification body {
+.notification-body {
   @apply flex flex-row justify-around items-center p-3
   w-full text-white
 }
@@ -167,7 +167,7 @@
   text-white
 }
 
-.notification body > p {
+.notification-body > p {
   @apply ml-3
   text-sm font-bold text-white text-center
 }

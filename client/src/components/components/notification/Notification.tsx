@@ -18,14 +18,14 @@ export const Notification = () => {
 
 	return (
 		<div className='notification'>
-			<body>
+			<div className='notification-body'>
 				<ExclamationCircleIcon className='notification-icon' />
 				<p>{notificationState.message}</p>
 				<XMarkIcon
 					className='notification-close-icon'
 					onClick={() => dispatch(closeNotification())}
 				/>
-			</body>
+			</div>
 		</div>
 	);
 };

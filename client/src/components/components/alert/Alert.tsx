@@ -17,10 +17,10 @@ export const Alert = () => {
 	return (
 		<div className='alert-screen-background'>
 			<div className='alert'>
-				<body>
+				<div className='alert-body'>
 					<ExclamationCircleIcon className='alert-icon' />
 					<h3>{alertState.message}</h3>
-				</body>
+				</div>
 				<footer>
 					<button
 						className='alert-cancel-btn'
