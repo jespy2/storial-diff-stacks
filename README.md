@@ -31,10 +31,13 @@ For 2.0, I refactored the app with new features, cleaner/DRYer code, improved pe
   - Refactored to include Typescript and testing via React Testing Library.
   - Added authorization/profile layer.
   - Updated React Router syntax for v6+
+  - Migrated state management to Redux Toolkit
   - Audited and refactored to improve accessibility and performance.
   - Sorting books by field
-  - Added modals with branded styling instead of using alerts
-  - Added pills to display read/unread status that also act as toggle buttons for said status
+  - Added custom components:
+    - Modals with branded styling instead of using alerts
+    - Pills to display read/unread status that also act as toggle buttons for said status
+    - Tooltips for clickable icons 
   - Dark mode
 
 ## Stretch Features
