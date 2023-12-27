@@ -11,5 +11,5 @@ export interface IBookController {
 export interface IAuthController { 
   createUser: (req: Request, res: Response, next: NextFunction) => Promise<void>;
   loginUser: (req: Request, res: Response, next: NextFunction) => Promise<void>;
-  logoutUser: (req: Request, res: Response) => Promise<void>;
+  getUser: (req: Request, res: Response) => Promise<void>;
 };

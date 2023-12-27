@@ -22,7 +22,12 @@ export const Signup = () => {
     const payload: IUser = userInput;
     
     await dispatch(authThunks.createUser(payload))
-		keepLoggedIn && localStorage.setItem("keepLoggedIn", "true");
+		if (keepLoggedIn) {
+			document.cookie = "keepLoggedIn=true; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure";
+			document.cookie = `userName=${payload.username}; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure`;
+			document.cookie = `email=${payload.email}; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure`;
+			document.cookie = `password=${payload.password}; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure`;
+		}
   };  
 
 	const handleIsRegistered = async (e: { preventDefault: () => void }) => {

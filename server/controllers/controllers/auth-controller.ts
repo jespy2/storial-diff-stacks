@@ -27,8 +27,10 @@ authController.createUser = async (req, res, next) => {
     const user = await User.create(newUser);
     const token = createSecretToken(user._id.toString());
     res.cookie('token', token, {
+      expires: new Date(Date.now() + 900000),
       httpOnly: true,
-      secure: true
+      secure: true,
+      sameSite: 'none'
     });
     res.status(201)
       .json({
@@ -62,8 +64,10 @@ authController.loginUser = async (req, res, next) => {
     }
     const token = createSecretToken(user._id.toString());
     res.cookie('token', token, {
+      expires: new Date(Date.now() + 900000),
       httpOnly: true,
-      secure: true
+      secure: true,
+      sameSite: 'none'
     });
     res.status(200).json({ message: 'User logged in!', success: true, user });
     next();
@@ -73,4 +77,24 @@ authController.loginUser = async (req, res, next) => {
     next(error);
   }
 };
+
+authController.getUser = async (req, res) => {
+  try {
+    const findUser = await User.findOne({ username: req.params.username });
+    if (!findUser) {
+      res.status(400).json({ message: 'User not found' });
+      return;
+    }
+    res.status(200).json({ message: 'User found!', success: true, data: findUser });
+    return;
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ error, message: 'User not found' });
+      return;
+    } else {
+      res.status(500).send('User not found');
+      return;
+    }
+  }
+ }
 export default authController;

@@ -17,6 +17,7 @@ export const getBookById = (id: string) => book_api.get(`/book/${id}`);
 
 export const createUser = (payload: IUser) => auth_api.post(`/signup`, payload);
 export const loginUser = (payload: IUser) => auth_api.post(`/login`, payload);
+export const getUser = (username: string) => auth_api.get(`/${username}`);
 
 const apis = {
     insertBook,
@@ -26,6 +27,7 @@ const apis = {
     getBookById,
     createUser,
     loginUser,
+    getUser,
 }
 
 export default apis

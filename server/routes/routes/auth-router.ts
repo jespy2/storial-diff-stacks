@@ -4,10 +4,10 @@ import { AuthController } from '../../controllers';
 import { userVerification } from '../../middleware';
 
 const router = Router();
-const { createUser, loginUser, logoutUser } = AuthController;
+const { createUser, loginUser, getUser } = AuthController;
 
 router.post('/signup', createUser);
 router.post('/login', loginUser);
-router.post('/', userVerification)
+router.get('/:username', getUser)
 
 export default router;

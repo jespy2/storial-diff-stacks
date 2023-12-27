@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authThunks } from "../../thunks";
 import { IAuthState } from "../../../types";
 
-const { createUser, loginUser } = authThunks;
+const { createUser, loginUser, getUser } = authThunks;
 
 const initialAuthState: IAuthState = {
   auth: {
@@ -66,6 +66,16 @@ export const authSlice = createSlice({
         isError: false,
       }
     },
+    getUser: (state, action) => { 
+      state.auth.isAuthenticated = action.payload.success;
+      state.auth.userInfo = {
+        email: action.payload.data.email,
+        password: action.payload.data.password,
+        username: action.payload.data.username
+      };
+      state.isLoading = false;
+      state.isError = false;
+    },
     userIsRegistered: (state) => { 
       state.auth.isRegistered = true;
     },
@@ -125,52 +135,28 @@ export const authSlice = createSlice({
         state.auth.isAuthenticated = false;
         state.auth.isRegistered = false;
       })
+    // GETUSER
+    .addCase(getUser.pending, (state, action) => {
+      state.isLoading = true;
+      state.isError = false;
+    })
+    .addCase(getUser.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.auth.isAuthenticated = action.payload.success;
+      state.auth.userInfo = {
+        email: action.payload.data.email,
+        password: action.payload.data.password,
+        username: action.payload.data.username
+      };
+    })
+    .addCase(getUser.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+    })
+
   }
 });
 
 export const { reducer: authReducer, actions: authActions } = authSlice;
 export const { userIsRegistered, userNotRegistered, logoutUser } = authActions;
-
-
-    // logoutUser: (state, action) => {
-    //   state.isAuthenticated = action.payload.success;
-    //   state.userInfo = action.payload.user;
-    //   state.isLoading = false;
-    //   state.isError = false;
-    // },
-    // checkUser: (state, action) => {
-    //   state.isAuthenticated = action.payload.success;
-    //   state.userInfo = action.payload.user;
-    //   state.isLoading = false;
-    //   state.isError = false;
-    // },
-    // updateUser: (state, action) => {
-    //   state.isAuthenticated = action.payload.success;
-    //   state.userInfo = action.payload.user;
-    //   state.isLoading = false;
-    //   state.isError = false;
-    // },
-    // deleteUser: (state, action) => {
-    //   state.isAuthenticated = action.payload.success;
-    //   state.userInfo = action.payload.user;
-    //   state.isLoading = false;
-    //   state.isError = false;
-    // },
-    // updatePassword: (state, action) => {
-    //   state.isAuthenticated = action.payload.success;
-    //   state.userInfo = action.payload.user;
-    //   state.isLoading = false;
-    //   state.isError = false;
-    // },
-    // forgotPassword: (state, action) => {
-    //   state.isAuthenticated = action.payload.success;
-    //   state.userInfo = action.payload.user;
-    //   state.isLoading = false;
-    //   state.isError = false;
-    // },
-    // resetPassword: (state, action) => {
-    //   state.isAuthenticated = action.payload.success;
-    //   state.userInfo = action.payload.user;
-    //   state.isLoading = false;
-    //   state.isError = false;
-    // }
