@@ -6,6 +6,7 @@ import { AppDispatch } from "../../../redux/store";
 import { userNotRegistered } from "../../../redux/slices";
 import { authThunks } from "../../../redux/thunks";
 import { IUser } from "../../../types";
+import { cookieCreator } from "../../../util";
 
 export const Login = () => {
 	const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -23,10 +24,7 @@ export const Login = () => {
 
 		await dispatch(authThunks.loginUser(payload));
 		if (keepLoggedIn) {
-			document.cookie = "keepLoggedIn=true; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure";
-			document.cookie = `userName=${payload.username}; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure`;
-			document.cookie = `email=${payload.email}; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure`;
-			document.cookie = `password=${payload.password}; max-age=(60 * 60 * 24 * 30); SameSite=None;Secure`;
+			cookieCreator(dispatch, userInput.username);
 		}
 	};
 
@@ -37,11 +35,7 @@ export const Login = () => {
 	const { password, username } = userInput;
 	return (
 		<div className='flex flex-col items-center'>
-			<img
-					src='/storial-logo.png'
-					alt='Storial Logo'
-					className='header-logo'
-				/>
+			<img src='/storial-logo.png' alt='Storial Logo' className='header-logo' />
 			<h2 className='text-3xl font-bold text-gray-400 mb-20'>Login</h2>
 			<form onSubmit={handleSubmit}>
 				<label
@@ -65,29 +59,35 @@ export const Login = () => {
 					className='block text-gray-400 text-sm font-bold mb-2'
 					htmlFor='password'
 				>
-					<div className="relative" >
-					<EyeIcon className={`password-icon ${showPassword ? 'block' : 'hidden'}`} onClick={() => setShowPassword(!showPassword )}/>
-					<EyeSlashIcon className={`password-icon ${!showPassword ? 'block' : 'hidden'}`} onClick={() => setShowPassword(!showPassword )}/>
-					<input
-						type={showPassword ? 'text' : 'password'}
-						name='password'
-						id='password'
-						className='textfield focus:outline-none focus:shadow-outline'
-						value={password}
-						placeholder='Password'
-						onChange={(e) =>
-							setUserInput({ ...userInput, password: e.target.value })
-						}
+					<div className='relative'>
+						<EyeIcon
+							className={`password-icon ${showPassword ? "block" : "hidden"}`}
+							onClick={() => setShowPassword(!showPassword)}
+						/>
+						<EyeSlashIcon
+							className={`password-icon ${!showPassword ? "block" : "hidden"}`}
+							onClick={() => setShowPassword(!showPassword)}
+						/>
+						<input
+							type={showPassword ? "text" : "password"}
+							name='password'
+							id='password'
+							className='textfield focus:outline-none focus:shadow-outline'
+							value={password}
+							placeholder='Password'
+							onChange={(e) =>
+								setUserInput({ ...userInput, password: e.target.value })
+							}
 						/>
 					</div>
 				</label>
-				
+
 				<div>
 					<label htmlFor='keep-logged-in'>
 						<input
 							name='keep-logged-in'
 							type='checkbox'
-							className="mr-2"
+							className='mr-2'
 							checked={keepLoggedIn}
 							onChange={() => setKeepLoggedIn(!keepLoggedIn)}
 						/>
@@ -108,7 +108,7 @@ export const Login = () => {
 
 			<h3
 				className='text-gray-400 text-sm font-bold mb-2 cursor-pointer'
-				onClick={()=> alert('send me a reset link')}
+				onClick={() => alert("send me a reset link")}
 			>
 				Uh...I forgot my password!
 			</h3>

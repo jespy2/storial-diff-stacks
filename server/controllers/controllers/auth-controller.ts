@@ -1,7 +1,7 @@
 import { User } from '../../models/';
-import { createSecretToken } from '../../util/SecretToken';
 import bcrypt from 'bcryptjs';
 
+import { createSecretToken } from '../../util/SecretToken';
 import { IAuthController, IUser } from '../../types';
 
 
@@ -22,7 +22,7 @@ authController.createUser = async (req, res, next) => {
         success: false,
         error: Error
        });
-       return
+      return;
     }
     const user = await User.create(newUser);
     const token = createSecretToken(user._id.toString());
@@ -54,12 +54,14 @@ authController.loginUser = async (req, res, next) => {
     }
     const user = await User.findOne({ username });
     if (!user) {
-      res.status(400).json({ message: 'Invalid password or username' });
+      res.status(400).json({ message: 'Invalid username' });
       return;
     }
-    const auth = await bcrypt.compare(password, user.password);
+    const authActualPass = await bcrypt.compare(password, user.password);
+    const authCryptPass = await User.findOne({ password });
+    const auth = authActualPass || authCryptPass;
     if(!auth) {
-      res.status(400).json({ message: 'Invalid password or username' });
+      res.status(400).json({ message: 'Invalid password' });
       return;
     }
     const token = createSecretToken(user._id.toString());

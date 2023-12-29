@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
 import {
 	Home as HomeContent,
 	Login,
@@ -7,7 +8,7 @@ import {
 	ModeToggle,
 	Signup,
 } from "../../components";
-import { getCookie } from "../../util/GetCookie";
+import { getCookie } from "../../util";
 import { useAppSelector } from "../../hooks";
 import { authThunks } from "../../redux/thunks";
 import { IUser } from "../../types";
@@ -15,35 +16,31 @@ import { AppDispatch } from "../../redux/store";
 
 export const Home = () => {
 	const authState = useAppSelector((state) => state.auth.auth);
-	const mystate = useAppSelector((state) => state.auth.auth.userInfo);
 	const { isAuthenticated, isRegistered } = authState;
 	const dispatch = useDispatch<AppDispatch>();
-	
 
-	useEffect(() => { 
-		if (getCookie('keepLoggedIn')) {
-			dispatch(authThunks.getUser(getCookie('userName') as string)); 
+	useEffect(() => {
+		if (getCookie("keepLoggedIn")) {
 			const payload: IUser = {
-				username: getCookie('userName') as string,
-				password: getCookie('password') as string,
-				email: getCookie('email') as string
+				username: getCookie("userName") as string,
+				password: getCookie("password") as string,
+				email: getCookie("email") as string,
 			};
-			 dispatch(authThunks.loginUser(payload));
+			dispatch(authThunks.loginUser(payload));
 		}
-	}, []);
-	
+	});
+
 	return (
 		<div className='home-container'>
-			
 			<ModeToggle />
 			{!isAuthenticated && !isRegistered && <Signup />}
 			{!isAuthenticated && isRegistered && <Login />}
-			{isAuthenticated &&
+			{isAuthenticated && (
 				<>
 					<Logout />
 					<HomeContent />
 				</>
-			}
+			)}
 		</div>
 	);
 };

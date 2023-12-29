@@ -3,11 +3,11 @@ import { IBook, IUser } from '../types'
 
 const book_api = axios.create({
     baseURL: 'http://localhost:8000/api',
-})
+});
 
 const auth_api = axios.create({
     baseURL: 'http://localhost:8000/auth',
-})
+});
 
 export const insertBook = (payload: IBook) => book_api.post(`/book`, payload);
 export const getAllBooks = (username: string) => book_api.get(`/books/${username}`);
@@ -28,6 +28,6 @@ const apis = {
     createUser,
     loginUser,
     getUser,
-}
+};
 
-export default apis
+export default apis;

@@ -33,11 +33,11 @@ export const authSlice = createSlice({
             email: action.payload.user.email,
             password: action.payload.user.password,
             username: action.payload.user.username
-          }
+          },
         },
         isLoading: false,
         isError: false,
-      }
+      };
     },
     logoutUser: (state) => {
       state.auth.isAuthenticated = false;
@@ -60,13 +60,13 @@ export const authSlice = createSlice({
             email: action.payload.user.email,
             password: action.payload.user.password,
             username: action.payload.user.username
-          }
+          },
         },
         isLoading: false,
         isError: false,
       }
     },
-    getUser: (state, action) => { 
+    getUser: (state, action) => {        
       state.auth.isAuthenticated = action.payload.success;
       state.auth.userInfo = {
         email: action.payload.data.email,
@@ -94,15 +94,15 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.auth =
-        {
-          isAuthenticated: action.payload?.response.data.success,
-          isRegistered: action.payload?.response.data.success,
-          userInfo: {
-            email: action.payload ? action.payload?.user.email : '',
-            password: action.payload ? action.payload?.user.password : '',
-            username: action.payload ? action.payload?.user.username : ''
-          }
-        }
+      {
+        isAuthenticated: action.payload?.response.data.success,
+        isRegistered: action.payload?.response.data.success,
+        userInfo: {
+          email: action.payload ? action.payload?.user.email : '',
+          password: action.payload ? action.payload?.user.password : '',
+          username: action.payload ? action.payload?.user.username : ''
+        },
+      };
     })
     .addCase(loginUser.rejected, (state, action) => {
       state.isLoading = false;
@@ -119,15 +119,15 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.auth =
-          {
-            isAuthenticated: action.payload?.response.data.success,
-            isRegistered: action.payload?.response.data.success,
-            userInfo: {
-              email: action.payload ? action.payload?.user.email : '',
-              password: action.payload ? action.payload?.user.password : '',
-              username: action.payload ? action.payload?.user.username : ''
-            }
-          }
+        {
+          isAuthenticated: action.payload?.response.data.success,
+          isRegistered: action.payload?.response.data.success,
+          userInfo: {
+            email: action.payload ? action.payload?.user.email : '',
+            password: action.payload ? action.payload?.user.password : '',
+            username: action.payload ? action.payload?.user.username : ''
+          },
+        };
       })
       .addCase(createUser.rejected, (state, action) => {
         state.isLoading = false;

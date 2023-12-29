@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import apis from "../../../api";
 import { IUser } from "../../../types";
-import { create } from "domain";
 
 export const authThunks = {
   createUser: createAsyncThunk(
@@ -16,9 +15,9 @@ export const authThunks = {
         return data;
       } catch (err) {
         if (err instanceof Error) {
-          rejectWithValue(err.message)
+          rejectWithValue(err.message);
         } else {
-          rejectWithValue('An unexpected error occured')
+          rejectWithValue('An unexpected error occured');
         }
       }
     }
@@ -36,9 +35,9 @@ export const authThunks = {
         return data;
       } catch (err) {
         if (err instanceof Error) {
-          rejectWithValue(err.message)
+          rejectWithValue(err.message);
         } else {
-          rejectWithValue('An unexpected error occured')
+          rejectWithValue('An unexpected error occured');
         }
       }
     }
@@ -52,9 +51,9 @@ export const authThunks = {
         return response.data;
       } catch (err) {
         if (err instanceof Error) {
-          rejectWithValue(err.message)
+          rejectWithValue(err.message);
         } else {
-          rejectWithValue('An unexpected error occured')
+          rejectWithValue('An unexpected error occured');
         }
       }
     }
