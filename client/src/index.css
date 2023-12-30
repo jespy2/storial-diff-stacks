@@ -223,3 +223,8 @@
   @apply absolute top-5 right-8 cursor-pointer
   h-8 w-8 text-blue-500 hover:text-gray-400
 }
+
+.espylogo {
+  @apply w-8 mr-2
+  fill-white
+}

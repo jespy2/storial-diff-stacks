@@ -1,4 +1,5 @@
 import React from 'react';
+import { EspyLogo } from '../../../images/EspyLogo';
 
 export const Footer = () => {
   return (
@@ -9,6 +10,7 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
+        <EspyLogo />
           Handmade artisanal app by James Espy
         </a>
       </footer>
