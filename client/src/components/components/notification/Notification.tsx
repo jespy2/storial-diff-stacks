@@ -14,7 +14,7 @@ export const Notification = () => {
 		setTimeout(() => {
 			dispatch(closeNotification());
 		}, 3000);
-	}, []);
+	});
 
 	return (
 		<div className='notification'>

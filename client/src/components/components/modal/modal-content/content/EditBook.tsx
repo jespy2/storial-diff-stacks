@@ -35,7 +35,7 @@ export const EditBook = () => {
 				titleField.current && titleField.current.focus();
 			});
 		})();
-	}, []);
+	});
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();

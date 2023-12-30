@@ -44,6 +44,7 @@ For 2.0, I refactored the app with new features, cleaner/DRYer code, improved pe
 
 In the future, I'd like to add the following:
   - Filtering and search
+  - Apply input field custom hooks to forms (already being used in add book form)
   - Additional fields such as date entered and genre
   - Genre field that has preset options, but editable by user
   - Hosted DB with app running live.

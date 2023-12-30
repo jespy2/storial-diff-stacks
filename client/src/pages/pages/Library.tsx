@@ -38,7 +38,7 @@ export const Library = () => {
 		if (!isAuthenticated) {
 			navigate('/');
 		}
-	}, []);
+	});
 
 	return (
 		<div className='home-container'>
