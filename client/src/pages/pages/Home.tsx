@@ -28,7 +28,7 @@ export const Home = () => {
 			};
 			dispatch(authThunks.loginUser(payload));
 		}
-	});
+	}, [dispatch]);
 
 	return (
 		<div className='home-container'>
