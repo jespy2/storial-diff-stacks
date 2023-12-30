@@ -1,7 +1,6 @@
 import { Router } from 'express';
 
 import { AuthController } from '../../controllers';
-import { userVerification } from '../../middleware';
 
 const router = Router();
 const { createUser, loginUser, getUser } = AuthController;

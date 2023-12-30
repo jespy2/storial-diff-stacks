@@ -7,8 +7,3 @@ export interface IUser {
   books: IBook[];
   createdAt: Date;
 }
-
-export interface IUserQuery extends IUser {
-  save: () => Promise<any>;
-  _id: string;
-}

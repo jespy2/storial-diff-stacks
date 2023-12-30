@@ -1,1 +1,0 @@
-export { userVerification } from './middleware/userVerification';
