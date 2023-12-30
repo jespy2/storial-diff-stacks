@@ -64,7 +64,7 @@ export const EditBook = () => {
 		<div className='flex flex-col'>
 			<form className='flex flex-col' onSubmit={handleSubmit}>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='title'
 				>
 					Title
@@ -82,7 +82,7 @@ export const EditBook = () => {
 					}}
 				/>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='author'
 				>
 					Author
@@ -99,7 +99,7 @@ export const EditBook = () => {
 					}}
 				/>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='notes'
 				>
 					Notes

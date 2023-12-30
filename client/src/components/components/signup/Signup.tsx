@@ -41,7 +41,7 @@ export const Signup = () => {
 			</h2>
 			<form onSubmit={handleSubmit}>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='email'
 				>
 					<input
@@ -57,7 +57,7 @@ export const Signup = () => {
 					/>
 				</label>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='username'
 				>
 					<input
@@ -73,7 +73,7 @@ export const Signup = () => {
 					/>
 				</label>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='password'
 				>
 					<div className='relative'>

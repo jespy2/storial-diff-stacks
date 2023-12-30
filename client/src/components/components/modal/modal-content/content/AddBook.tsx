@@ -1,20 +1,20 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../../../redux/store";
 import { closeModal, openNotification } from "../../../../../redux/slices";
 import { bookThunks } from "../../../../../redux/thunks";
 import { IBook } from "../../../../../types";
-import { useAppSelector } from "../../../../../hooks";
+import { useAppSelector, useFormInput } from "../../../../../hooks";
 
 export const AddBook = () => {
-	const [title, setTitle] = useState("");
-	const [author, setAuthor] = useState("");
-	const [notes, setNotes] = useState("");
 	const dispatch = useDispatch<AppDispatch>();
-	
 	const authState = useAppSelector((state) => state.auth.auth);
 	const { username } = authState.userInfo;
+
+	const titleProps = useFormInput("");
+	const authorProps = useFormInput("");
+	const notesProps = useFormInput("");
 
 	//upon render, apply focus to title field
 	const titleField = useRef<HTMLInputElement | null>(null);
@@ -24,14 +24,20 @@ export const AddBook = () => {
 
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault();
+		console.log(titleProps.value);
 		const payload: IBook = {
 			username: username,
-			book: { title, author, notes, status: "unread" },
+			book: {
+				title: titleProps.value,
+				author: authorProps.value,
+				notes: notesProps.value,
+				status: "unread"
+			},
 		};
 
 		await dispatch(bookThunks.insertBook(payload)).then(() => {
 			dispatch(
-				openNotification({ message: `${title} has been added to your library` })
+				openNotification({ message: `${payload.book.title} has been added to your library` })
 			);
 			dispatch(closeModal());
 		});
@@ -41,7 +47,7 @@ export const AddBook = () => {
 		<>
 			<form className='flex flex-col' onSubmit={handleSubmit}>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='title'
 				>
 					Title
@@ -53,11 +59,10 @@ export const AddBook = () => {
 					id='title'
 					className='textfield focus:outline-none focus:shadow-outline'
 					required
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
+					{...titleProps}
 				/>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='author'
 				>
 					Author
@@ -68,11 +73,10 @@ export const AddBook = () => {
 					id='author'
 					className='textfield focus:outline-none focus:shadow-outline'
 					required
-					value={author}
-					onChange={(e) => setAuthor(e.target.value)}
+					{...authorProps}
 				/>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='notes'
 				>
 					Notes
@@ -82,8 +86,7 @@ export const AddBook = () => {
 					id='notes'
 					className='textfield focus:outline-none focus:shadow-outline h-28'
 					required
-					value={notes}
-					onChange={(e) => setNotes(e.target.value)}
+					{...notesProps}
 				/>
 				<input type='submit' value='Add Book' className='submit-btn' />
 			</form>

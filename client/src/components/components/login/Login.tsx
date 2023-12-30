@@ -39,7 +39,7 @@ export const Login = () => {
 			<h2 className='text-3xl font-bold text-gray-400 mb-20'>Login</h2>
 			<form onSubmit={handleSubmit}>
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='username'
 				>
 					<input
@@ -56,7 +56,7 @@ export const Login = () => {
 				</label>
 
 				<label
-					className='block text-gray-400 text-sm font-bold mb-2'
+					className='form-label'
 					htmlFor='password'
 				>
 					<div className='relative'>
@@ -86,6 +86,7 @@ export const Login = () => {
 					<label htmlFor='keep-logged-in'>
 						<input
 							name='keep-logged-in'
+							id='keep-logged-in'
 							type='checkbox'
 							className='mr-2'
 							checked={keepLoggedIn}
