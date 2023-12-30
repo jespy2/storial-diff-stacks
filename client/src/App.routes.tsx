@@ -5,7 +5,6 @@ export const routesConfig = [
 		errorElement: <NotFound />,
 		children: [
 			{ path: "/", element: <Home /> },
-			{ path: "/", element: <Home /> },
 			{ path: "/books/list", element: <Library /> },
 		],
 	},

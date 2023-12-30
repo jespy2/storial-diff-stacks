@@ -1,19 +1,18 @@
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
 
 import { AppDispatch } from "../../../redux/store";
 import { logoutUser } from "../../../redux/slices";
 import { Tooltip } from "../tooltip/Tooltip";
+import { deleteCookies } from "../../../util";
 
 export const Logout = () => { 
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
 
-  const onLogout = () => {
-    dispatch(logoutUser());
-    localStorage.setItem("keepLoggedIn", "false");
-    navigate('/');
+  const onLogout = async () => {
+    await dispatch(logoutUser());
+    await deleteCookies()
+    window.location.reload();
    };
 
 
