@@ -7,6 +7,7 @@ import { userIsRegistered } from "../../../redux/slices";
 import { authThunks } from "../../../redux/thunks";
 import { IUser } from "../../../types";
 import { cookieCreator } from "../../../util";
+import { Header } from "../../"; 
 
 export const Signup = () => {
 	const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -35,10 +36,7 @@ export const Signup = () => {
 	const { email, password, username } = userInput;
 	return (
 		<div className='flex flex-col items-center'>
-			<img src='/storial-logo.png' alt='Storial Logo' className='header-logo' />
-			<h2 className='text-3xl font-bold text-gray-400 mb-20'>
-				New User Registration
-			</h2>
+			<Header title='New user registration' />
 			<form onSubmit={handleSubmit}>
 				<label
 					className='form-label'

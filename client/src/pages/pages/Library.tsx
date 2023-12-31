@@ -8,12 +8,13 @@ import { ModalType } from "../../types";
 import { useAppSelector } from "../../hooks";
 import {
 	Alert,
-	Table,
 	Footer,
+	Header,
+	Logout,
 	Modal,
 	ModeToggle,
 	Notification,
-	Logout,
+	Table,
 } from "../../components";
 
 export const Library = () => {
@@ -44,20 +45,11 @@ export const Library = () => {
 		<div className='home-container'>
 			{isAuthenticated &&
 				<>
-					<Logout />
-					<ModeToggle />
-					<main className='page-header-container'>
-						<img
-							src='/storial-logo.png'
-							alt='Storial Logo'
-							className='header-logo'
-						/>
-						<h1 className='page-header-title'>Your Library</h1>
-					</main>
+				<Header title='Your library' />
 					{isLoading && <div>Loading...</div>}
 					{!isLoading && <Table />}
 
-					<section className='page-navbar px-4 '>
+					<section className='page-navbar'>
 						<Link to='/'>
 							<button className='standard-btn'>home</button>
 						</Link>

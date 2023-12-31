@@ -6,7 +6,7 @@ import { AppDispatch } from "../../../redux/store";
 import { openModal } from "../../../redux/slices";
 import { useFetchBooks } from "../../../hooks";
 import { ModalType } from "../../../types";
-import { Footer } from "../../";
+import { Footer, Header } from "../../";
 
 export const Home = () => { 
 	const dispatch = useDispatch<AppDispatch>();
@@ -23,9 +23,8 @@ export const Home = () => {
 						<link rel='icon' href='/favicon.ico' />
 					</header>
 
-					<main className='home-header-container'>
-						<img src='/storial-logo.png' alt='Storial Logo' className='w-1/3' />
-						<h1 className='home-header-title'>Track Books To Read Next!</h1>
+					<div className='home-header-container'>
+						<Header title="Track books to read next!" />
 						<Link to='books/list'>
 							<button className='standard-btn' data-testid='view-library-button'>
 								view library
@@ -41,7 +40,7 @@ export const Home = () => {
 								quick add book
 							</button>
 						</Link>
-					</main>
+					</div>
 					<Footer />
 				</>
   )

@@ -7,6 +7,7 @@ import { userNotRegistered } from "../../../redux/slices";
 import { authThunks } from "../../../redux/thunks";
 import { IUser } from "../../../types";
 import { cookieCreator } from "../../../util";
+import { Header } from "../../";
 
 export const Login = () => {
 	const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -35,8 +36,7 @@ export const Login = () => {
 	const { password, username } = userInput;
 	return (
 		<div className='flex flex-col items-center'>
-			<img src='/storial-logo.png' alt='Storial Logo' className='header-logo' />
-			<h2 className='text-3xl font-bold text-gray-400 mb-20'>Login</h2>
+			<Header title='Login' />
 			<form onSubmit={handleSubmit}>
 				<label
 					className='form-label'
@@ -109,7 +109,7 @@ export const Login = () => {
 
 			<h3
 				className='text-gray-400 text-sm font-bold mb-2 cursor-pointer'
-				onClick={() => alert("send me a reset link")}
+				onClick={() => alert("send me a reset link--not implemented yet")}
 			>
 				Uh...I forgot my password!
 			</h3>
