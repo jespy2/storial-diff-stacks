@@ -59,11 +59,11 @@ export const Library = () => {
 
 					<section className='page-navbar px-4 '>
 						<Link to='/'>
-							<button className='page-btn'>home</button>
+							<button className='standard-btn'>home</button>
 						</Link>
 
 						<button
-							className='page-btn'
+							className='standard-btn'
 							onClick={() => dispatch(openModal({ type: ModalType.ADD_BOOK }))}
 						>
 							quick add book

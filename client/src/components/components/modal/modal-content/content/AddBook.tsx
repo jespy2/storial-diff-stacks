@@ -88,7 +88,7 @@ export const AddBook = () => {
 					required
 					{...notesProps}
 				/>
-				<input type='submit' value='Add Book' className='submit-btn' />
+				<input type='submit' value='Add Book' className='standard-btn' />
 			</form>
 		</>
 	);

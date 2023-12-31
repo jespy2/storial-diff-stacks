@@ -110,7 +110,7 @@ export const Signup = () => {
 						Keep me logged in
 					</label>
 				</div>
-				<button className='submit-btn' type='submit'>
+				<button className='standard-btn' type='submit'>
 					Sign Up
 				</button>
 			</form>

@@ -112,7 +112,7 @@ export const EditBook = () => {
 					defaultValue={notes}
 					onChange={(e) => setNewNotes(e.target.value)}
 				/>
-				<input type='submit' value='Update Book' className='submit-btn' />
+				<input type='submit' value='Update Book' className='standard-btn' />
 			</form>
 		</div>
 	);

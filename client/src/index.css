@@ -6,22 +6,14 @@
   @apply dark:bg-black dark:text-white
 }
 
-.home-btn {
-  @apply bg-blue-500 hover:bg-gray-400 p-5 text-white font-extrabold rounded-md shadow-lg uppercase my-8
+.standard-btn {
+  @apply bg-blue-500 hover:bg-gray-400 shadow-lg 
+  text-xs md:text-sm text-white font-extrabold uppercase
+  rounded-md w-36 md:w-40 p-3 md:mt-5 sm:mx-5 sm:mt-10 lg:mt-16
 }
 
 .header-logo {
-  @apply w-8/12 sm:w-1/3 lg:w-1/4
-}
-
-.page-btn {
-  @apply bg-blue-500 hover:bg-gray-400 p-3 text-sm text-white font-extrabold rounded-md shadow-lg uppercase mt-5 w-44 sm:mx-5 sm:mt-10 lg:mt-16
-}
-
-.submit-btn {
-  @apply my-2 sm:my-8 mx-auto w-32
-  bg-blue-500 hover:bg-gray-400 p-1  rounded-md shadow-lg 
-  text-white font-extrabold uppercase 
+  @apply w-1/6 md:w-1/3 lg:w-1/4
 }
 
 .footer-container {
@@ -41,7 +33,7 @@
 }
 
 .home-container {
-  @apply flex flex-col items-center justify-center h-screen py-2
+  @apply flex flex-col items-center justify-center h-screen md:py-2
 }
 
 .home-header-container {
@@ -117,7 +109,8 @@
 }
 
 .alert {
-  @apply z-50 absolute inset-x-1/2 inset-y-1/2  transform -translate-x-1/2 -translate-y-1/2 h-1/3 w-1/3
+  @apply z-50 absolute inset-x-1/2 inset-y-1/2  transform -translate-x-1/2 -translate-y-1/2 
+  h-1/3 w-full sm:w-1/2 md:w-1/3 lg:w-1/3
   flex flex-col items-center justify-center p-4
   border-2 border-blue-500 rounded-md bg-slate-50 shadow-lg
   dark:bg-gray-800
@@ -138,15 +131,11 @@
 }
 
 .alert-cancel-btn {
-  @apply my-2 sm:my-8 mx-auto w-32
-  bg-red-500 hover:bg-red-200 p-1  rounded-md shadow-lg 
-  text-white font-extrabold uppercase 
+  @apply bg-red-500 hover:bg-red-200 p-3 text-sm text-white font-extrabold rounded-md shadow-lg uppercase mt-5 w-44 mx-2 sm:mx-5 sm:mt-10 lg:mt-16 
 }
 
 .alert-confirm-btn {
-  @apply my-2 sm:my-8 mx-auto w-32
-  bg-blue-500 hover:bg-gray-400 p-1  rounded-md shadow-lg 
-  text-white font-extrabold uppercase 
+  @apply bg-blue-500 hover:bg-gray-400 p-3 text-sm text-white font-extrabold rounded-md shadow-lg uppercase mt-5 w-44 mx-2 sm:mx-5 sm:mt-10 lg:mt-16
 }
 
 .notification {

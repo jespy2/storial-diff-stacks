@@ -7,14 +7,20 @@ export const Table = () => {
 	const { isLoading } = booksState;
 
 	return (
-		<div className='flex-grow overflow-auto h-80 w-3/4 rounded-md shadow-lg dark:border dark:border-slate-300 dark:shadow-md dark:shadow-slate-500'>
-			{isLoading && <div>Collecting your books from the shelves...</div>}
-			{!isLoading && (
-				<table className='relative w-full table '>
-					<TableHeader />
-					<TableBody />
-				</table>
-			)}
+		<div className='flex flex-col max-w-full overflow-x-auto rounded-md shadow-lg dark:border dark:border-slate-300 dark:shadow-md dark:shadow-slate-500'>
+			<div className="sm:-mx-6 lg:-mx-8">
+				<div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+					<div className="overflow-x-auto">
+					{isLoading && <div>Collecting your books from the shelves...</div>}
+					{!isLoading && (
+						<table className='relative min-w-full table '>
+							<TableHeader />
+							<TableBody />
+						</table>
+					)}
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

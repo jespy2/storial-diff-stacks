@@ -19,7 +19,7 @@ export const NotFound = () => {
       <h1 className="text-4xl font-bold text-gray-900">Bummer!</h1>
       <h3 className="text-xl font-bold text-gray-400">That page cannot be found</h3>
       <Link to="/">
-        <button className="home-btn">Take me home!</button>
+        <button className="standard-btn">Take me home!</button>
       </Link>
     </main>
   )
