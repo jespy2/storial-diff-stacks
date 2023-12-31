@@ -18,7 +18,7 @@ export const TableBody = () => {
 			{bookState &&
 				bookState.map((book) => (
 					<tbody className='border-separate space-y-6 p-5 mt-10' key={book._id as Key}>
-						<tr className='p-3 text-sm' >
+						<tr className='table-row' >
 							<td className='border-r p-3'>
 								<div className='pill'>
 									<Pill book={book} />

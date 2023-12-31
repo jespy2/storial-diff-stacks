@@ -31,8 +31,8 @@ export const ModeToggle = () => {
 		<div className='mode-toggle group'>
 			<Tooltip message='Toggle dark/light mode' parent='mode-toggle' />
 			<button onClick={(e) => handleToggle(e)} >
-				<MoonIcon className={`toggle-dark-icon ${darkMode === 'dark' && "hidden"}`} />
-				<SunIcon className={`toggle-light-icon ${darkMode === 'light' && "hidden"}`} />
+				<SunIcon className={`mode-toggle-icon ${darkMode === 'light' && "hidden"}`} />
+				<MoonIcon className={`mode-toggle-icon ${darkMode === 'dark' && "hidden"}`} />
 			</button>
 		</div>
 	);

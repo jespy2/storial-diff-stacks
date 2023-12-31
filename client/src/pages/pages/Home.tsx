@@ -5,7 +5,6 @@ import {
 	Home as HomeContent,
 	Login,
 	Logout,
-	ModeToggle,
 	Signup,
 } from "../../components";
 import { getCookie } from "../../util";
@@ -32,7 +31,6 @@ export const Home = () => {
 
 	return (
 		<div className='home-container'>
-			<ModeToggle />
 			{!isAuthenticated && !isRegistered && <Signup />}
 			{!isAuthenticated && isRegistered && <Login />}
 			{isAuthenticated && (

@@ -27,7 +27,7 @@ export const TableHeader = () => {
 			<thead>
 				<tr>
 					<th
-						className='sticky top-0 px-6 py-3 bg-blue-300 hover:bg-gray-400'
+						className='table-header'
 						onClick={() =>
 							dispatch(bookSlice.actions.sortBooks({ sortBy: SortItem.STATUS }))
 						}
@@ -43,7 +43,7 @@ export const TableHeader = () => {
 						</span>
 					</th>
 					<th
-						className='sticky top-0 px-6 py-3 bg-blue-300 hover:bg-gray-400'
+						className='table-header'
 						onClick={() =>
 							dispatch(bookSlice.actions.sortBooks({ sortBy: SortItem.TITLE }))
 						}
@@ -59,7 +59,7 @@ export const TableHeader = () => {
 						</span>
 					</th>
 					<th
-						className='sticky top-0 px-6 py-3 bg-blue-300 hover:bg-gray-400'
+						className='table-header'
 						onClick={() =>
 							dispatch(bookSlice.actions.sortBooks({ sortBy: SortItem.AUTHOR }))
 						}
@@ -74,9 +74,9 @@ export const TableHeader = () => {
 							/>
 						</span>
 					</th>
-					<th className='sticky top-0 px-6 py-3 bg-blue-300'>Notes</th>
-					<th className='sticky top-0 px-6 py-3 bg-blue-300'></th>
-					<th className='sticky top-0 px-6 py-3 bg-blue-300'></th>
+					<th className='table-header'>Notes</th>
+					<th className='table-header'></th>
+					<th className='table-header'></th>
 				</tr>
 			</thead>
 		</>

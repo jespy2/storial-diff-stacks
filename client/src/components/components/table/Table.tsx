@@ -7,7 +7,7 @@ export const Table = () => {
 	const { isLoading } = booksState;
 
 	return (
-		<div className='flex flex-col max-w-full overflow-x-auto rounded-md shadow-lg dark:border dark:border-slate-300 dark:shadow-md dark:shadow-slate-500'>
+		<div className='flex flex-col max-w-full h-3/4 overflow-x-auto rounded-md shadow-lg dark:border dark:border-slate-300 dark:shadow-md dark:shadow-slate-500'>
 			<div className="sm:-mx-6 lg:-mx-8">
 				<div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
 					<div className="overflow-x-auto">
