@@ -33,21 +33,21 @@ export const Library = () => {
 		closeModal();
 	}, [booksState.books.data]);
 
-	useEffect(() => { 
+	useEffect(() => {
 		if (!isAuthenticated) {
-			navigate('/');
+			navigate("/");
 		}
 	});
 
 	return (
-		<div className='home-container'>
-			{isAuthenticated &&
+		<div className='page-container'>
+			{isAuthenticated && (
 				<>
-				<Header title='Your library' />
+					<Header title='Your library' />
 					{isLoading && <div>Loading...</div>}
 					{!isLoading && <Table />}
 
-					<section className='page-navbar'>
+					<section className='flex flex-col sm:flex-row items-center justify-center w-full flex-1 mb-6 md:px-20 text-center md:pb-20 lg:-mt-10 '>
 						<Link to='/'>
 							<button className='standard-btn'>home</button>
 						</Link>
@@ -68,7 +68,7 @@ export const Library = () => {
 
 					<Footer />
 				</>
-			}
+			)}
 		</div>
 	);
 };

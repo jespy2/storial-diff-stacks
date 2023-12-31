@@ -23,7 +23,7 @@ export const Home = () => {
 						<link rel='icon' href='/favicon.ico' />
 					</header>
 
-					<div className='home-header-container'>
+					<div className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center mt-10 mb-40'>
 						<Header title="Track books to read next!" />
 						<Link to='books/list'>
 							<button className='standard-btn' data-testid='view-library-button'>

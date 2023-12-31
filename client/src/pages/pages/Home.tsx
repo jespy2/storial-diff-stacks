@@ -1,12 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-	Home as HomeContent,
-	Login,
-	Logout,
-	Signup,
-} from "../../components";
+import { Home as HomeContent, Login, Logout, Signup } from "../../components";
 import { getCookie } from "../../util";
 import { useAppSelector } from "../../hooks";
 import { authThunks } from "../../redux/thunks";
@@ -30,7 +25,7 @@ export const Home = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='home-container'>
+		<div className='page-container'>
 			{!isAuthenticated && !isRegistered && <Signup />}
 			{!isAuthenticated && isRegistered && <Login />}
 			{isAuthenticated && (
