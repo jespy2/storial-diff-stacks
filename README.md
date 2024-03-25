@@ -1,4 +1,4 @@
-![Storial Logo](client/public/storial-logo.png)
+![Storial Logo](/storial-logo.png)
 # Storial Different Tech Stacks
 
 ## Stretch Features
